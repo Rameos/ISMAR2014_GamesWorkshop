@@ -17,4 +17,11 @@ public class SwordScript : MonoBehaviour {
 
 
 	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		
+		Destroy(other.gameObject);Debug.Log ("hit");
+		
+	}
 }

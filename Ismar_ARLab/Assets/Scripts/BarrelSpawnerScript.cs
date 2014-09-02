@@ -4,8 +4,12 @@ using System.Collections;
 public class BarrelSpawnerScript : MonoBehaviour {
 
 	public GameObject barrelPrefab;
+
+	public float speedMin, speedMax;
+
 	public float cooldownTime;
 
+	public GameObject left, right, top, bottom;
 
 
 	private bool barrelReady;
@@ -20,10 +24,16 @@ public class BarrelSpawnerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (barrelReady) 
-		{
+		{	
+
+			float x = Random.Range(left.transform.position.x, right.transform.position.x);
+			float y = Random.Range(bottom.transform.position.y, top.transform.position.y);
+			Vector3 target = new Vector3(x, y, -3f);
+
 			GameObject spawnedBarrel = (GameObject)Instantiate(barrelPrefab);
 			spawnedBarrel.transform.position = gameObject.transform.position;
-			spawnedBarrel.rigidbody.AddForce(new Vector3(Random.Range(-200f, 200f),Random.Range(100f, 200f) , -350f));
+			spawnedBarrel.GetComponent<BarrelScript>().target = target;
+			spawnedBarrel.GetComponent<BarrelScript>().speed = Random.Range(speedMin, speedMax);
 			barrelReady = false;
 			StartCoroutine(barrelCD());
 
