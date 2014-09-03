@@ -12,9 +12,19 @@ public class SwordScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		gameObject.transform.RotateAround (pivot.transform.position, Vector3.forward, Input.GetAxis ("Horizontal") * rotationSpeed*-1f);
+	//	gameObject.transform.RotateAround (pivot.transform.position, Vector3.forward, Input.GetAxis ("Horizontal") * rotationSpeed*-1f);
 	
 
 
+	}
+
+	void OnTriggerEnter(Collider barrel)
+	{
+		if (barrel.tag == "Barrel") 
+				{
+						//Debug.Log ("Barrel hit the sword");
+						Destroy (barrel.gameObject);
+						GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatsScript>().score++;
+				}
 	}
 }

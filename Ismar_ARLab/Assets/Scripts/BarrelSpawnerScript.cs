@@ -6,8 +6,6 @@ public class BarrelSpawnerScript : MonoBehaviour {
 	public GameObject barrelPrefab;
 	public float cooldownTime;
 
-
-
 	private bool barrelReady;
 
 	// Use this for initialization
@@ -21,11 +19,10 @@ public class BarrelSpawnerScript : MonoBehaviour {
 	void Update () {
 		if (barrelReady) 
 		{
-			GameObject spawnedBarrel = (GameObject)Instantiate(barrelPrefab);
-			spawnedBarrel.transform.position = gameObject.transform.position;
-			spawnedBarrel.rigidbody.AddForce(new Vector3(Random.Range(-200f, 200f),Random.Range(100f, 200f) , -350f));
+			GameObject barrelInstance = (GameObject)Instantiate(barrelPrefab);
+			barrelInstance.transform.position = gameObject.transform.position;
 			barrelReady = false;
-			StartCoroutine(barrelCD());
+			StartCoroutine (barrelCD());
 
 		}
 	}
