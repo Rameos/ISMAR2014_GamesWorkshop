@@ -21,6 +21,7 @@ public class Input_Password : MonoBehaviour {
 
     void OnGUI()
     {
+		Debug.Log ("Test!");
         posXInputField = Screen.width*xPosScale;
         posYInputField = Screen.height * yPosScale;
 
