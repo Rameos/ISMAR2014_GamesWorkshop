@@ -18,7 +18,6 @@ public class SwordScript : MonoBehaviour {
 
 	}
 
-<<<<<<< HEAD
 	void OnTriggerEnter(Collider barrel)
 	{
 		if (barrel.tag == "Barrel") 
@@ -27,12 +26,5 @@ public class SwordScript : MonoBehaviour {
 						Destroy (barrel.gameObject);
 						GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatsScript>().score++;
 				}
-=======
-	void OnTriggerEnter(Collider other)
-	{
-		
-		Destroy(other.gameObject);Debug.Log ("hit");
-		
->>>>>>> cb1f8312bb5e92d1958ee83450fbdb69cea5eda0
 	}
 }
