@@ -25,6 +25,7 @@ public class SwordScript : MonoBehaviour {
 						//Debug.Log ("Barrel hit the sword");
 						Destroy (barrel.gameObject);
 						GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatsScript>().score++;
+
 				}
 	}
 }

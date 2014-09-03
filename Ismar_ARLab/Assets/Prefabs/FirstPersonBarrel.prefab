@@ -10,10 +10,10 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  - 114: {fileID: 11400000}
   - 65: {fileID: 6500000}
   - 54: {fileID: 5400000}
-  m_Layer: 0
+  - 114: {fileID: 11400000}
+  m_Layer: 9
   m_Name: FirstPersonBarrel
   m_TagString: Barrel
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.80819631, y: -1.80376518, z: 24.0537624}
+  m_LocalPosition: {x: -4.58508682, y: 1.15631855, z: 5.39624023}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -68,7 +68,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: .100000001
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -94,10 +94,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08f66cb17df7db04a8706a72e9306eab, type: 3}
+  m_Script: {fileID: 11500000, guid: 136934625d7427c49a9e219528037ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: .00999999978
+  right: 0
+  left: 0
+  top: 0
+  bottom: 0
+  z: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -7,10 +7,19 @@ public class DonkeyScript : MonoBehaviour {
 	private int directionX;
 
 	private float xSin;
+
+
+	public float cooldownTime;
+	public GameObject barrelPrefab;
+	private bool barrelReady;
 	// Use this for initialization
 	void Start () {
 		directionX = 1;
 		xSin = 0;
+
+
+		barrelReady = false;
+		StartCoroutine (barrelCD());
 	}
 	
 	// Update is called once per frame
@@ -24,6 +33,19 @@ public class DonkeyScript : MonoBehaviour {
 			directionX = -1; 
 				}
 
+		if (barrelReady) 
+		{
+			GameObject barrelInstance = (GameObject)Instantiate(barrelPrefab);
+			barrelInstance.transform.position = gameObject.transform.position;
+			barrelReady = false;
+			StartCoroutine (barrelCD());
+			
+		}
+	}
 
+	IEnumerator barrelCD()
+	{
+		yield return new WaitForSeconds (cooldownTime);
+		barrelReady = true;
 	}
 }
