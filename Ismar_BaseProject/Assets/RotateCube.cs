@@ -4,6 +4,8 @@ using System.Collections;
 public class RotateCube : MonoBehaviour
 {
     private GameObject targetRotation;
+    private int sideShowing;
+    private int dirShowing;
 
     void Start()
     {
@@ -32,7 +34,57 @@ public class RotateCube : MonoBehaviour
                 break;
         }
 
-        Debug.Log(targetRotation.transform.rotation.eulerAngles);
+        if (targetRotation.transform.up == Vector3.up)
+        {
+            sideShowing = 0;
+        }
+        else if (targetRotation.transform.up == -Vector3.up)
+        {
+            sideShowing = 1;
+        }
+        else if (targetRotation.transform.up == Vector3.right)
+        {
+            sideShowing = 2;
+        }
+        else if (targetRotation.transform.up == -Vector3.right)
+        {
+            sideShowing = 3;
+        }
+        else if (targetRotation.transform.up == Vector3.forward)
+        {
+            sideShowing = 4;
+        }
+        else if (targetRotation.transform.up == -Vector3.forward)
+        {
+            sideShowing = 5;
+        }
+
+        if (targetRotation.transform.right == Vector3.up)
+        {
+            dirShowing = 0;
+        }
+        else if (targetRotation.transform.right == -Vector3.up)
+        {
+            dirShowing = 1;
+        }
+        else if (targetRotation.transform.right == Vector3.right)
+        {
+            dirShowing = 2;
+        }
+        else if (targetRotation.transform.right == -Vector3.right)
+        {
+            dirShowing = 3;
+        }
+        else if (targetRotation.transform.right == Vector3.forward)
+        {
+            dirShowing = 4;
+        }
+        else if (targetRotation.transform.right == -Vector3.forward)
+        {
+            dirShowing = 5;
+        }
+
+        Debug.Log(sideShowing + " " + dirShowing);
     }
 
     void Update()
