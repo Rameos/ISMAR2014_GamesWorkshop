@@ -8,15 +8,16 @@ public class PlayerStatsScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		lives = 10;
+		lives = 5;
 		score = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
 
+
+	}
+	
 	void OnCollisionEnter (Collision collision)
 	{
 		if (collision.gameObject.tag == "Barrel") 

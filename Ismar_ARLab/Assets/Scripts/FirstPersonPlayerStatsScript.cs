@@ -4,17 +4,25 @@ using System.Collections;
 public class FirstPersonPlayerStatsScript : MonoBehaviour {
 	
 	
-	public int lives, score;
+	public int lives, score, targetScore;
 	
 	// Use this for initialization
 	void Start () {
-		lives = 10;
+		lives = 5;
 		score = 0;
+		targetScore = 15;
+
+
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (score >= targetScore)
+						Debug.Log ("win");//Application.LoadLevel (3); 
+		else if (lives <= 0)
+			Debug.Log ("lose");//Application.LoadLevel (2);
 	}
 
 	
