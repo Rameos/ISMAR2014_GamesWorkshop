@@ -1,17 +1,25 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class IndicatorScript : MonoBehaviour {
 
-    public GameObject indicator;
+    public Animator indicatorAnimator;
 
-	// Use this for initialization
+
+
+
 	void Start () {
-
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+        //indicatorAnimator.speed = speed;
 	}
+
+    public void relativeSpeed(float distance)
+    {
+        indicatorAnimator.speed = 1F / (distance / 20F);
+    }
 }
