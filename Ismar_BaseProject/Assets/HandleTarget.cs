@@ -9,7 +9,15 @@ public class HandleTarget : MonoBehaviour {
 
     public void ShowTarget()
     {
+        GameObject[] cubeObjects = GameObject.FindGameObjectsWithTag("Cube");
+
+        foreach(GameObject cube in cubeObjects)
+        {
+            cube.GetComponent<RotateCube>().ChangeLocation();
+        }
+
         target.SetActive(!target.activeSelf);
+
         if (target.activeSelf)
             text.text = "Hide Target";
         else

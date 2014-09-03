@@ -3,14 +3,26 @@ using System.Collections;
 
 public class RotateCube : MonoBehaviour
 {
+    public int currentField1;
+    public int currentField2;
+    public int sideShowing;
+    public int dirShowing;
+
+    public GameObject location2;
+    private Vector3 posWork;
+    private Vector3 posEdit;
+    private Vector3 targetLocation;
+
     private GameObject targetRotation;
-    private int sideShowing;
-    private int dirShowing;
 
     void Start()
     {
         targetRotation = new GameObject();
         targetRotation.transform.rotation = transform.rotation;
+
+        posWork = transform.position;
+        posEdit = location2.transform.position;
+        targetLocation = posWork;
     }
 
     public void SetTargetRotation(GameObject gameObject, SwipeScript.rotation dir)
@@ -87,9 +99,23 @@ public class RotateCube : MonoBehaviour
         Debug.Log(sideShowing + " " + dirShowing);
     }
 
+    public void ChangeLocation()
+    {
+        if (posWork == targetLocation)
+        {
+            targetLocation = posEdit;
+        }
+        else
+        {
+            targetLocation = posWork;
+        }
+    }
+
     void Update()
     {
         if (gameObject.transform.rotation != targetRotation.transform.rotation)
             gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, targetRotation.transform.rotation, 0.2f);
+
+        transform.position = Vector3.Lerp(transform.position, targetLocation, 0.3f);
     }
 }

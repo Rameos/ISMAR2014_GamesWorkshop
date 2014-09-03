@@ -3,9 +3,14 @@ using System.Collections;
 
 public class SwipeScript : MonoBehaviour
 {
-    GameObject selectedObject;
-    GameObject gObject;
+    private GameObject selectedObject;
+    private GameObject gObject;
 
+    private int[,] finalMatrix1 = new int[3, 3] { { 2, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
+    private int[,] finalMatrix2 = new int[3, 3] { { 1, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
+
+    private int[,] currentMatrix1 = new int[3, 3] { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
+    private int[,] currentMatrix2 = new int[3, 3] { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
 
     public enum rotation
     {
@@ -103,7 +108,30 @@ public class SwipeScript : MonoBehaviour
 
     private void Rotate(GameObject gameObject, rotation rotation)
     {
-        gameObject.GetComponent<RotateCube>().SetTargetRotation(gameObject, rotation);
+        RotateCube rotator = gameObject.GetComponent<RotateCube>();
+        rotator.SetTargetRotation(gameObject, rotation);
+
+        currentMatrix1[rotator.currentField1, rotator.currentField2] = rotator.sideShowing;
+        currentMatrix2[rotator.currentField1, rotator.currentField2] = rotator.dirShowing;
+
+        Debug.Log("Final " + finalMatrix1[rotator.currentField1, rotator.currentField2] + " " +
+            finalMatrix2[rotator.currentField1, rotator.currentField2]);
+
+        checkVictory();
     }
 
+    private void checkVictory()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            for (int t = 0; t < 3; t++)
+            {
+                if (finalMatrix1[i, t] != currentMatrix1[i, t])
+                    return;
+                if (finalMatrix2[i, t] != currentMatrix2[i, t])
+                    return;
+            }
+        }
+        Debug.Log("Victory");
+    }
 }
