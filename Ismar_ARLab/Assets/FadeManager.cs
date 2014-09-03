@@ -7,8 +7,8 @@ public class FadeManager : MonoBehaviour
     public Color fadeColor;
     public static float fadeSpeed = 1f;
 
-    private static bool isFadeInActive = false;
-    private static bool isFadeOutActive = true;
+    private static bool isFadeInActive = true;
+    private static bool isFadeOutActive = false;
 
     private float screenHeight;
     private float screenWidth;
@@ -69,6 +69,7 @@ public class FadeManager : MonoBehaviour
         if (guiTexture.color.a >= 0.95f)
         {
             isFadeOutActive = false;
+			Application.LoadLevel(1);
         }
 
     }

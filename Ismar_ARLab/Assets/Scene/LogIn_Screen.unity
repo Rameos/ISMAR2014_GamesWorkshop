@@ -785,9 +785,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2640f49199a1384391d7addc184aab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  password: FUNKYTOWN
+  password: tetris
   xPosScale: .400000006
-  yPosScale: .899999976
+  yPosScale: .879999995
 --- !u!1 &440221522
 GameObject:
   m_ObjectHideFlags: 0
