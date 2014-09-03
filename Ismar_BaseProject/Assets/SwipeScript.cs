@@ -3,33 +3,107 @@ using System.Collections;
 
 public class SwipeScript : MonoBehaviour
 {
+    GameObject selectedObject;
+    GameObject gObject;
 
+
+    public enum rotation
+    {
+        none, left, right, up, down
+    }
 
     private float fingerStartTime = 0.0f;
     private Vector2 fingerStartPos = Vector2.zero;
 
     private bool isSwipe = false;
-    private float minSwipeDist = 50.0f;
-    private float maxSwipeTime = 0.5f;
+    private float minSwipeDist = 10.0f;
+    private float maxSwipeTime = 1f;
 
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount != 0)
+        if (Input.touchCount <= 0)
         {
+            return;
+        }
 
-            Touch touch = Input.touches[0];
+        Touch touch = Input.touches[0];
 
-            Ray ray = Camera.main.ScreenPointToRay(touch.position);
-            RaycastHit hit;
+        switch (touch.phase)
+        {
+            case TouchPhase.Began:
+                Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 10000f))
-            {
-                Debug.Log(hit.transform.gameObject.name);
-                MeshRenderer render = hit.transform.gameObject.GetComponent<MeshRenderer>();
-                render.material.color = Color.red;
-            }
+                if (Physics.Raycast(ray, out hit, 10000f))
+                {
+                    selectedObject = hit.transform.gameObject;
+                    isSwipe = true;
+                    fingerStartTime = Time.time;
+                    fingerStartPos = touch.position;
+                }
+                break;
+
+            case TouchPhase.Canceled:
+                selectedObject = null;
+                isSwipe = false;
+                break;
+
+            case TouchPhase.Ended:
+                float gestureTime = Time.time - fingerStartTime;
+                float gestureDist = (touch.position - fingerStartPos).magnitude;
+
+                if (selectedObject == null)
+                    break;
+
+                if (isSwipe && gestureTime < maxSwipeTime && gestureDist > minSwipeDist)
+                {
+                    gObject = selectedObject;
+
+                    Vector2 direction = touch.position - fingerStartPos;
+                    Vector2 swipeType = Vector2.zero;
+
+                    if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+                    {
+                        swipeType = Vector2.right * Mathf.Sign(direction.x);
+                    }
+                    else
+                    {
+                        swipeType = Vector2.up * Mathf.Sign(direction.y);
+                    }
+
+                    if (swipeType.x != 0.0f)
+                    {
+
+                        if (swipeType.x > 0.0f)
+                        {
+                            Rotate(gObject, rotation.right);
+                        }
+                        else
+                        {
+                            Rotate(gObject, rotation.left);
+                        }
+                    }
+
+                    if (swipeType.y != 0.0f)
+                    {
+                        if (swipeType.y > 0.0f)
+                        {
+                            Rotate(gObject, rotation.up);
+                        }
+                        else
+                        {
+                            Rotate(gObject, rotation.down);
+                        }
+                    }
+                }
+                break;
         }
     }
+
+    private void Rotate(GameObject gameObject, rotation rotation)
+    {
+        gameObject.GetComponent<RotateCube>().SetTargetRotation(gameObject, rotation);
+    }
+
 }
