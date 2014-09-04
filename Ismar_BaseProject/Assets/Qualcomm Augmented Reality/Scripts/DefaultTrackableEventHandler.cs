@@ -80,6 +80,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         {
             component.enabled = true;
         }
+        UIManager.HideCancelDialog();
 
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
     }
@@ -104,7 +105,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
 
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
 
-        
+        UIManager.ShowCancelDialog();
     }
 
     #endregion // PRIVATE_METHODS
