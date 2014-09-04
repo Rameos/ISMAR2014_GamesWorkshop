@@ -5,8 +5,8 @@ public class GPSControllerScript : MonoBehaviour {
 
 
     //GPS Points
-    private float lati1 = 48.26253F;
-    private float longi1 = 11.66639F;
+    private float lati1 = 48.26257F;
+    private float longi1 = 11.66627F;
     private float lati2 = 48.26256F;
     private float longi2 = 11.66878F;
     private float lati3 = 48.2633F;
@@ -28,13 +28,15 @@ public class GPSControllerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        float closest = -1;
         if (GPSOn)
         {
             GetDistances();
-            float closest = getClosest(distance1, distance2, distance3);            
-            indicatorScript.relativeSpeed(closest);
-            GPSTextScript.changeText(Input.location.lastData.latitude, Input.location.lastData.longitude, log, closest, closestKey);
-        }        
+            closest = getClosest(distance1, distance2, distance3);            
+            indicatorScript.relativeSpeed(closest);            
+        }
+        GPSTextScript.changeText(Input.location.lastData.latitude, Input.location.lastData.longitude, log, closest, closestKey);
+        checkVictory();
     }
 
     public void StartGPS()
@@ -133,5 +135,10 @@ public class GPSControllerScript : MonoBehaviour {
         return currentSmallest;
     }
 
-
+    private void checkVictory()
+    {
+        if(distance1 == -1 && distance2 == -1 && distance3 == -1){
+            log = "victory!!";
+        }
+    }
 }

@@ -3,6 +3,6 @@
   <Tracking>
     <ImageTarget name="tarmac" size="235.000000 164.500000" />
     <ImageTarget name="chips" size="235.000000 164.500000" />
-    <ImageTarget name="Stone" size="235.000000 313.333344" />
+    <ImageTarget name="butt" size="235.000000 235.000000" />
   </Tracking>
 </QCARConfig>

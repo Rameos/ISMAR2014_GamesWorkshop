@@ -89,6 +89,9 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         if (mTrackableBehaviour.TrackableName.Equals("chips"))
         {
             hintCollector.found(2);
+        }
+        if (mTrackableBehaviour.TrackableName.Equals("butt"))
+        {
             hintCollector.found(3);
         }
 
