@@ -118,7 +118,20 @@ public class GPSControllerScript : MonoBehaviour {
 
     private float getClosest(float d1, float d2, float d3)
     {
+        if (d1 == -1)
+        {
+            d1 = 1000000000;
+        }
+        if (d2 == -1)
+        {
+            d2 = 1000000000;
+        }
+        if (d3 == -1)
+        {
+            d3 = 1000000000;
+        }
         float currentSmallest = d1;
+
         closestKey = 1;
         if (d2 < currentSmallest)
         {
@@ -130,6 +143,11 @@ public class GPSControllerScript : MonoBehaviour {
         {
             closestKey = 3;
             currentSmallest = d3;
+        }
+
+        if (currentSmallest == 1000000000)
+        {
+            currentSmallest = -1;
         }
 
         return currentSmallest;
