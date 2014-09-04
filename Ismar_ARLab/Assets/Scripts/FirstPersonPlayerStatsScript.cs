@@ -19,10 +19,13 @@ public class FirstPersonPlayerStatsScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (score >= targetScore)
-						Debug.Log ("win");//Application.LoadLevel (3); 
-		else if (lives <= 0)
-			Debug.Log ("lose");//Application.LoadLevel (2);
+		if (score >= targetScore) {
+						GameObject.Find ("Ubitrack").GetComponent<SimpleFacade> ().stopUbiTrack ();
+						Application.LoadLevel (3);
+				} else if (lives <= 0) 
+		{GameObject.Find ("Ubitrack").GetComponent<SimpleFacade> ().stopUbiTrack ();
+			Application.LoadLevel (2);
+				}
 	}
 
 	

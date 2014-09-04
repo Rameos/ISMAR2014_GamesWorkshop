@@ -9,6 +9,7 @@ public class FirstPersonBarrelScript : MonoBehaviour {
 	public bool isExplosive;
 	private float rotationSpeedX, rotationSpeedY, rotationSpeedZ;
 
+
 	// Use this for initialization
 	void Start () {
 		right = 0.2930751f;
@@ -18,17 +19,19 @@ public class FirstPersonBarrelScript : MonoBehaviour {
 		z = 2.1f;
 		target = new Vector3 
 			(Random.Range(left, right),Random.Range(bottom, top),z  );
-		float r = Random.Range (0, 10); if (r > 8f) {
+	int r = Random.Range (0, 5); if (r >= 4) {
 						isExplosive = true;
 						gameObject.renderer.material.color = Color.red;
-				} else
-						isExplosive = false;
+		} else
+						//isExplosive = false;
 		transform.rotation = Random.rotation;
 		rotationSpeedX = Random.Range (0.1f,0.5f);
 		rotationSpeedY = Random.Range (0.1f,0.5f);
 		rotationSpeedZ = Random.Range (0.1f,0.5f);
 
 	}
+
+
 	
 	// Update is called once per frame
 	void Update () {

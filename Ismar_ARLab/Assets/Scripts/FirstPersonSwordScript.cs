@@ -3,7 +3,10 @@ using System.Collections;
 
 public class FirstPersonSwordScript : MonoBehaviour {
 	
-	public GameObject pivot;
+
+
+	public GameObject explosion;
+
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +29,8 @@ public class FirstPersonSwordScript : MonoBehaviour {
 			if (barrel.gameObject.GetComponent<FirstPersonBarrelScript>().isExplosive)
 			{
 				GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonPlayerStatsScript>().lives--;
+				GameObject e = (GameObject)Instantiate(explosion);
+				e.transform.position = barrel.gameObject.transform.position;
 			}
 
 			else
