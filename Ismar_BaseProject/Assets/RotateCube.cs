@@ -95,8 +95,6 @@ public class RotateCube : MonoBehaviour
         {
             dirShowing = 5;
         }
-
-        Debug.Log(sideShowing + " " + dirShowing);
     }
 
     public void ChangeLocation()

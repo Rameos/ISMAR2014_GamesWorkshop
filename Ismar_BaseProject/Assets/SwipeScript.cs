@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class SwipeScript : MonoBehaviour
@@ -6,8 +7,11 @@ public class SwipeScript : MonoBehaviour
     private GameObject selectedObject;
     private GameObject gObject;
 
-    private int[,] finalMatrix1 = new int[3, 3] { { 2, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
-    private int[,] finalMatrix2 = new int[3, 3] { { 1, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
+    public Text matrixText1;
+    public Text matrixText2;
+
+    private int[,] finalMatrix1 = new int[3, 3] { { 4, 2, 3 }, { 4, 1, 0 }, { 4, 5, 1 } };
+    private int[,] finalMatrix2 = new int[3, 3] { { 2, 0, 5 }, { 2, 3, 3 }, { 0, 1, 2 } };
 
     private int[,] currentMatrix1 = new int[3, 3] { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
     private int[,] currentMatrix2 = new int[3, 3] { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
@@ -42,10 +46,21 @@ public class SwipeScript : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit, 10000f))
                 {
-                    selectedObject = hit.transform.gameObject;
-                    isSwipe = true;
-                    fingerStartTime = Time.time;
-                    fingerStartPos = touch.position;
+                    if (hit.transform.gameObject.tag == "Cube")
+                    {
+                        selectedObject = hit.transform.gameObject;
+                        isSwipe = true;
+                        fingerStartTime = Time.time;
+                        fingerStartPos = touch.position;
+                    }
+                    else
+                    {
+                        selectedObject = null;
+                    }
+                }
+                else
+                {
+                    selectedObject = null;
                 }
                 break;
 
@@ -114,24 +129,37 @@ public class SwipeScript : MonoBehaviour
         currentMatrix1[rotator.currentField1, rotator.currentField2] = rotator.sideShowing;
         currentMatrix2[rotator.currentField1, rotator.currentField2] = rotator.dirShowing;
 
-        Debug.Log("Final " + finalMatrix1[rotator.currentField1, rotator.currentField2] + " " +
-            finalMatrix2[rotator.currentField1, rotator.currentField2]);
-
         checkVictory();
     }
 
     private void checkVictory()
     {
+        bool success = true;
+        string matrix1 = "";
+        string matrix2 = "";
+
         for (int i = 0; i < 3; i++)
         {
             for (int t = 0; t < 3; t++)
             {
+                matrix1 += currentMatrix1[i, t] + ", ";
+                matrix2 += currentMatrix2[i, t] + ", ";
+
                 if (finalMatrix1[i, t] != currentMatrix1[i, t])
-                    return;
+                    success = false;
                 if (finalMatrix2[i, t] != currentMatrix2[i, t])
-                    return;
+                    success = false;
             }
         }
-        Debug.Log("Victory");
+
+        matrixText1.text = matrix1;
+        matrixText2.text = matrix2;
+
+        if (success)
+        {
+            matrixText1.color = Color.green;
+            matrixText2.color = Color.green;
+            Debug.Log("Victory");
+        }
     }
 }
