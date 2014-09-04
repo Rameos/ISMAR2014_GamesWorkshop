@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        DefaultTrackableEventHandler.sceneFlag = 1;
         buttonHide = buttonHide1;
         buttonShow = buttonShow1;
         text = text1;
