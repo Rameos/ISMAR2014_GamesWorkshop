@@ -18,8 +18,8 @@ public class GPSTextScript : MonoBehaviour {
 	
 	}
 
-    public void changeText(float lat, float longi, string log, float distance)
+    public void changeText(float lat, float longi, string log, float distance, int currentclosest)
     {
-        GPStext.text = "Latitude: " + lat + " Longitude: " + longi + "Log: " + log + "Distance: " + distance; 
+        GPStext.text = "Lat: " + lat + "Lng: " + longi + "Log: " + log + "Distance: " + distance + "CLosest: " + currentclosest; 
     }
 }
