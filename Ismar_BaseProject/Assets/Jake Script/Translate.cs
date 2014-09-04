@@ -115,7 +115,8 @@ public class Translate : MonoBehaviour {
 
 		case 1:
 
-			if(GUI.Button(new Rect (20,400, 230, 150), "Search"))
+
+			if(GUI.Button(new Rect (20,400,200, 150), "Search"))
 			{
 				CandleRender = 1;
 				GameObject.Find("InfoText").GetComponent<TextMesh>().text = "Candle stick found";
@@ -128,7 +129,7 @@ public class Translate : MonoBehaviour {
 
 		case 2:
 
-			if(GUI.Button(new Rect (20,400, 230, 150), "Search"))
+			if(GUI.Button(new Rect (20,400, 200, 150), "Search"))
 			{
 				CandleRender = 2;
 				GameObject.Find("InfoText").GetComponent<TextMesh>().text = "Candle stick found";
