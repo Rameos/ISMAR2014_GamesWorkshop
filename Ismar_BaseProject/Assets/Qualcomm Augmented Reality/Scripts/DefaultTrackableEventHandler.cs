@@ -103,6 +103,8 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         }
 
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
+
+        
     }
 
     #endregion // PRIVATE_METHODS

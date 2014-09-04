@@ -28,6 +28,10 @@ public class SwipeScript : MonoBehaviour
     private float minSwipeDist = 10.0f;
     private float maxSwipeTime = 1f;
 
+    void Start()
+    {
+        checkVictory();
+    }
 
     void Update()
     {
