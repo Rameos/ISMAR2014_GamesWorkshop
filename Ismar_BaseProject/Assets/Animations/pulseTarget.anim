@@ -24,7 +24,7 @@ AnimationClip:
         outSlope: -.00571052311
         tangentMode: 1
       - time: 1.5
-        value: .600000024
+        value: .800000012
         inSlope: 0
         outSlope: 0
         tangentMode: 1
@@ -75,7 +75,7 @@ AnimationClip:
         outSlope: -.00571052311
         tangentMode: 1
       - time: 1.5
-        value: .600000024
+        value: .800000012
         inSlope: 0
         outSlope: 0
         tangentMode: 1
