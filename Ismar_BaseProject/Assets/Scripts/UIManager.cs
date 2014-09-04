@@ -15,7 +15,6 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        DefaultTrackableEventHandler.sceneFlag = 1;
         buttonHide = buttonHide1;
         buttonShow = buttonShow1;
         text = text1;
@@ -37,7 +36,7 @@ public class UIManager : MonoBehaviour
 
     public void TriggerCancelPuzzle()
     {
-
+        Application.LoadLevel(0);            
     }
 
 }

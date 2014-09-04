@@ -13,7 +13,6 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
                                             ITrackableEventHandler
 {
     public HintCollectorScript hintCollector;
-    public static int sceneFlag;
 
     #region PRIVATE_MEMBER_VARIABLES
  
@@ -84,18 +83,18 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
             component.enabled = true;
         }
 
-        if (sceneFlag == 1)
+        if (Application.loadedLevel == 1)
         {
             UIManager.HideCancelDialog();
         }
 
-        if (sceneFlag == 0)
+        if (Application.loadedLevel == 0)
         {
             if (mTrackableBehaviour.TrackableName.Equals("tarmac"))
             {
                 hintCollector.found(1);
             }
-            if (mTrackableBehaviour.TrackableName.Equals("chips"))
+            if (mTrackableBehaviour.TrackableName.Equals("back"))
             {
                 hintCollector.found(2);
             }
@@ -103,6 +102,11 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
             {
                 hintCollector.found(3);
             }
+            if (mTrackableBehaviour.TrackableName.Equals("chips"))
+            {
+                Application.LoadLevel("Safepuzzle");
+            }
+
         }
         
 
@@ -130,7 +134,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
 
-        if (sceneFlag == 1)
+        if (Application.loadedLevel == 1)
         {
             UIManager.ShowCancelDialog();
         }

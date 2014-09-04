@@ -737,6 +737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a917f0af64a6423093132dab321c15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hintCollector: {fileID: 0}
 --- !u!33 &456925472
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2525,8 +2526,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 578362077}
-        m_MethodName: ShowTarget
+      - m_Target: {fileID: 578362078}
+        m_MethodName: TriggerCancelPuzzle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -2,7 +2,8 @@
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
     <ImageTarget name="tarmac" size="235.000000 164.500000" />
-    <ImageTarget name="chips" size="235.000000 164.500000" />
     <ImageTarget name="butt" size="235.000000 235.000000" />
+    <ImageTarget name="chips" size="235.000000 164.500000" />
+    <ImageTarget name="back" size="235.000000 176.250000" />
   </Tracking>
 </QCARConfig>
