@@ -12,6 +12,8 @@ using UnityEngine;
 public class DefaultTrackableEventHandler : MonoBehaviour,
                                             ITrackableEventHandler
 {
+    public HintCollectorScript hintCollector;
+
     #region PRIVATE_MEMBER_VARIABLES
  
     private TrackableBehaviour mTrackableBehaviour;
@@ -80,6 +82,15 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         {
             component.enabled = true;
         }
+        if (mTrackableBehaviour.TrackableName.Equals("tarmac"))
+        {
+            hintCollector.found(1);
+        }
+        if (mTrackableBehaviour.TrackableName.Equals("chips"))
+        {
+            hintCollector.found(2);
+            hintCollector.found(3);
+        }
 
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
     }
@@ -101,7 +112,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         {
             component.enabled = false;
         }
-
+        
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
     }
 

@@ -3,28 +3,32 @@ using System.Collections;
 
 public class HintCollectorScript : MonoBehaviour {
 
-    public static bool pic1;
-    public static bool pic2;
-    public static bool pic3;
+    public GameObject [] sprites;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (pic1)
+
+    public void found(int key)
+    {
+        switch (key)
         {
-
+            case 1:
+                sprites[0].SetActive(true);
+                sprites[1].SetActive(true);
+                sprites[2].SetActive(true);
+                break;
+            case 2:
+                sprites[3].SetActive(true);
+                sprites[4].SetActive(true);
+                sprites[5].SetActive(true);
+                
+                break;
+            case 3:
+                sprites[6].SetActive(true);
+                sprites[7].SetActive(true);
+                sprites[8].SetActive(true);                
+                break;
+            default:
+                Debug.Log("that key does not exist!");
+                break;
         }
-        if (pic2)
-        {
-
-        }
-        if (pic3)
-        {
-
-        }
-	}
+    }
 }
