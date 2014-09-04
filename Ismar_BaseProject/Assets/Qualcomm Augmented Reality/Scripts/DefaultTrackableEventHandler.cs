@@ -12,6 +12,9 @@ using UnityEngine;
 public class DefaultTrackableEventHandler : MonoBehaviour,
                                             ITrackableEventHandler
 {
+    public HintCollectorScript hintCollector;
+    public static int sceneFlag;
+
     #region PRIVATE_MEMBER_VARIABLES
  
     private TrackableBehaviour mTrackableBehaviour;
@@ -80,7 +83,29 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         {
             component.enabled = true;
         }
-        UIManager.HideCancelDialog();
+
+        if (sceneFlag == 1)
+        {
+            UIManager.HideCancelDialog();
+        }
+
+        if (sceneFlag == 0)
+        {
+            if (mTrackableBehaviour.TrackableName.Equals("tarmac"))
+            {
+                hintCollector.found(1);
+            }
+            if (mTrackableBehaviour.TrackableName.Equals("chips"))
+            {
+                hintCollector.found(2);
+            }
+            if (mTrackableBehaviour.TrackableName.Equals("butt"))
+            {
+                hintCollector.found(3);
+            }
+        }
+        
+
 
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
     }
@@ -102,10 +127,14 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         {
             component.enabled = false;
         }
-
+        
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
 
-        UIManager.ShowCancelDialog();
+        if (sceneFlag == 1)
+        {
+            UIManager.ShowCancelDialog();
+        }
+        
     }
 
     #endregion // PRIVATE_METHODS
