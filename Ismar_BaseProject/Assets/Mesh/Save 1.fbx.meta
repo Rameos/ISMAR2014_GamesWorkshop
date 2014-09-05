@@ -1,0 +1,87 @@
+fileFormatVersion: 2
+guid: ccafac8c50bf1934d870fb22c0d34975
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bone
+    100004: Bone_001
+    100006: Camera
+    100008: Circle_002
+    100010: Input
+    100012: Left_BigDoor
+    100014: Left_Door
+    100016: Right_BigDoor
+    100018: Right_Door
+    100020: //RootNode
+    400000: Armature
+    400002: Bone
+    400004: Bone_001
+    400006: Camera
+    400008: Circle_002
+    400010: Input
+    400012: Left_BigDoor
+    400014: Left_Door
+    400016: Right_BigDoor
+    400018: Right_Door
+    400020: //RootNode
+    4300000: Circle_002
+    7400000: Default Take
+    7400002: ArmatureAction
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Circle_002
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 1
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
