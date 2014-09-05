@@ -17,7 +17,7 @@ public class Key : MonoBehaviour
         transform.position += velocity * Time.deltaTime;
 	}
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         Debug.LogError("!");
 
@@ -25,12 +25,12 @@ public class Key : MonoBehaviour
         {
             Debug.Log("You succesfully get the key out of the maze.");
         }
-        else if (other.name.Equals("ForceField"))
+        else if (other.tag.Equals("ForceField"))
         {
             Debug.Log("!");
             velocity = other.transform.right;
         }
-        else if (other.name.Equals("Wall"))
+        else if (other.tag.Equals("Wall"))
         {
             Debug.Log("You failed. Try Again");
             transform.position = initialPosition;

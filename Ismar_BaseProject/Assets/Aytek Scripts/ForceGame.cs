@@ -10,6 +10,14 @@ public class ForceGame : MonoBehaviour
 
     public Texture crosshairTexture;
     public float crossHairRadius = 20;
+    public bool snapToGrid = false;
+
+    public enum GameState 
+    {
+        Running,
+        Prompting,
+        Win
+    }
 
     void Start()
     {
@@ -114,8 +122,11 @@ public class ForceGame : MonoBehaviour
                             rotation.z = 270;
                     }
 
-                    lastWorldPosition.x = Mathf.RoundToInt(lastWorldPosition.x);
-                    lastWorldPosition.y = Mathf.RoundToInt(lastWorldPosition.y);
+                    if (snapToGrid)
+                    {
+                        lastWorldPosition.x = Mathf.RoundToInt(lastWorldPosition.x);
+                        lastWorldPosition.y = Mathf.RoundToInt(lastWorldPosition.y);
+                    }
 
 
                     forceFields.Add(Instantiate(forceFieldPrefab, lastWorldPosition, Quaternion.Euler(rotation)) as GameObject);
