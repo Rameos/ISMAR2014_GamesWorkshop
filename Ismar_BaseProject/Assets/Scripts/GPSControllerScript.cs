@@ -37,6 +37,15 @@ public class GPSControllerScript : MonoBehaviour {
         }
         GPSTextScript.changeText(Input.location.lastData.latitude, Input.location.lastData.longitude, log, closest, closestKey);
         checkVictory();
+
+        if (Input.gyro.enabled)
+        {
+            log = "GYRO ON!!";
+        }
+        else
+        {
+            log = "GYRO OFF1!";
+        }
     }
 
     public void StartGPS()
@@ -157,6 +166,14 @@ public class GPSControllerScript : MonoBehaviour {
     {
         if(distance1 == -1 && distance2 == -1 && distance3 == -1){
             log = "victory!!";
+        }
+    }
+
+    private void ShowPicture(float distance, int closeKey)
+    {
+        if (distance < 10)
+        {
+
         }
     }
 }
