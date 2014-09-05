@@ -104,12 +104,11 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
             }
             if (mTrackableBehaviour.TrackableName.Equals("chips"))
             {
-                Application.LoadLevel("Safepuzzle");
+                UIManagerGPS.ShowLoadingScreen();
+                Application.LoadLevelAsync("Safepuzzle");
             }
 
         }
-        
-
 
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
     }

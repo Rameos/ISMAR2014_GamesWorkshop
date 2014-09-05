@@ -8,16 +8,19 @@ public class UIManager : MonoBehaviour
     public static Button buttonHide;
     public static Button buttonShow;
     public static Text text;
+    public static GameObject loader;
 
     public Button buttonHide1;
     public Button buttonShow1;
     public Text text1;
+    public GameObject loader1;
 
     void Start()
     {
         buttonHide = buttonHide1;
         buttonShow = buttonShow1;
         text = text1;
+        loader = loader1;
     }
 
     public static void ShowCancelDialog()
@@ -34,9 +37,15 @@ public class UIManager : MonoBehaviour
         text.gameObject.SetActive(false);
     }
 
+    public static void ShowLoadingScreen()
+    {
+        loader.SetActive(true);
+    }
+
     public void TriggerCancelPuzzle()
     {
-        Application.LoadLevel(0);            
+        ShowLoadingScreen();
+        Application.LoadLevelAsync(0);            
     }
 
 }

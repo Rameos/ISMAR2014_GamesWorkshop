@@ -6,9 +6,6 @@ public class SwipeScript : MonoBehaviour
 {
     private GameObject selectedObject;
     private GameObject gObject;
-
-    public Text matrixText1;
-    public Text matrixText2;
     public static bool moveable;
 
     private int[,] finalMatrix1 = new int[3, 3] { { 4, 2, 3 }, { 4, 1, 0 }, { 4, 5, 1 } };
@@ -159,9 +156,6 @@ public class SwipeScript : MonoBehaviour
                     success = false;
             }
         }
-
-        matrixText1.text = matrix1;
-        matrixText2.text = matrix2;
 
         if (success)
         {
