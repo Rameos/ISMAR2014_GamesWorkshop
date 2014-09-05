@@ -90,15 +90,15 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
 
         if (Application.loadedLevel == 0)
         {
-            if (mTrackableBehaviour.TrackableName.Equals("tarmac"))
+            if (mTrackableBehaviour.TrackableName.Equals("stone1") || mTrackableBehaviour.TrackableName.Equals("stone2") || mTrackableBehaviour.TrackableName.Equals("stone3") || mTrackableBehaviour.TrackableName.Equals("stone4") || mTrackableBehaviour.TrackableName.Equals("stone5") || mTrackableBehaviour.TrackableName.Equals("stone6") || mTrackableBehaviour.TrackableName.Equals("stone7") || mTrackableBehaviour.TrackableName.Equals("stone8"))
             {
                 hintCollector.found(1);
             }
-            if (mTrackableBehaviour.TrackableName.Equals("back"))
+            if (mTrackableBehaviour.TrackableName.Equals("sign"))
             {
                 hintCollector.found(2);
             }
-            if (mTrackableBehaviour.TrackableName.Equals("butt"))
+            if (mTrackableBehaviour.TrackableName.Equals("gulli"))
             {
                 hintCollector.found(3);
             }

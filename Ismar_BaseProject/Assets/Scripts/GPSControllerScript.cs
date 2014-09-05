@@ -5,12 +5,12 @@ public class GPSControllerScript : MonoBehaviour {
 
 
     //GPS Points
-    private float lati1 = 48.26257F;
-    private float longi1 = 11.66627F;
-    private float lati2 = 48.26256F;
-    private float longi2 = 11.66878F;
-    private float lati3 = 48.2633F;
-    private float longi3 = 11.66897F;
+    private float lati1 = 48.26253F;
+    private float longi1 = 11.66639F;
+    private float lati2 = 48.26272F;
+    private float longi2 = 11.66652F;
+    private float lati3 = 48.26274F;
+    private float longi3 = 11.66623F;
 
     public GPSTextScript GPSTextScript;
     public IndicatorScript indicatorScript;

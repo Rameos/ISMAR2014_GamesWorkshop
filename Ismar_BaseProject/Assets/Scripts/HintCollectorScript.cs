@@ -7,6 +7,7 @@ public class HintCollectorScript : MonoBehaviour {
 
     void Start()
     {
+        PlayerPrefs.DeleteAll();
         startVisibilities();
     }
 
@@ -17,22 +18,25 @@ public class HintCollectorScript : MonoBehaviour {
         {
             case 1:
                 PlayerPrefsX.SetBool("GPS_key1", true);
-                sprites[0].SetActive(true);
-                sprites[1].SetActive(true);
-                sprites[2].SetActive(true);
+                for (int i = 0; i < 10; i++)
+                {
+                    sprites[i].SetActive(true);
+                }
                 break;
             case 2:
                 PlayerPrefsX.SetBool("GPS_key2", true);
-                sprites[3].SetActive(true);
-                sprites[4].SetActive(true);
-                sprites[5].SetActive(true);
+                for (int i = 10; i < 20; i++)
+                {
+                    sprites[i].SetActive(true);
+                }
                 
                 break;
             case 3:
                 PlayerPrefsX.SetBool("GPS_key3", true);
-                sprites[6].SetActive(true);
-                sprites[7].SetActive(true);
-                sprites[8].SetActive(true);                
+                for (int i = 20; i < 30; i++)
+                {
+                    sprites[i].SetActive(true);
+                }  
                 break;
             default:
                 Debug.Log("that key does not exist!");
