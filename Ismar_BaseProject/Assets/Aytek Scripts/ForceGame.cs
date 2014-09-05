@@ -19,7 +19,7 @@ public class ForceGame : MonoBehaviour
         Win
     }
 
-    void Start()
+    void Awake()
     {
         arCamera = GameObject.Find("ARCamera");
 	}
@@ -75,6 +75,55 @@ public class ForceGame : MonoBehaviour
 
     void CreateForceFieldUsingSweepMotion()
     {
+        if(Input.GetMouseButtonDown(0))
+        {
+            Ray ray = arCamera.camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                lastWorldPosition = hit.point;
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            Ray ray = arCamera.camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                Vector3 rotation = Vector3.zero;
+                Vector3 direction = hit.point - lastWorldPosition;
+
+                if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+                {
+                    if (direction.x > 0)
+                        rotation.z = 0;
+                    else
+                        rotation.z = 180;
+                }
+                else
+                {
+                    if (direction.y > 0)
+                        rotation.z = 90;
+                    else
+                        rotation.z = 270;
+                }
+
+                if (snapToGrid)
+                {
+                    lastWorldPosition.x = Mathf.RoundToInt(lastWorldPosition.x);
+                    lastWorldPosition.y = Mathf.RoundToInt(lastWorldPosition.y);
+                }
+
+
+                forceFields.Add(Instantiate(forceFieldPrefab, lastWorldPosition, Quaternion.Euler(rotation)) as GameObject);
+            }
+        }
+
+
+
         int i = 0;
         while (i < Input.touchCount)
         {
@@ -142,4 +191,17 @@ public class ForceGame : MonoBehaviour
         CreateForceFieldUsingSweepMotion();
         //CreateForceFieldUsingAngle();
 	}
+
+    void Reset()
+    {
+        for (int i = 0; i < forceFields.Count; i++)
+        {
+            Destroy(forceFields[i]);
+        }
+    }
+
+    void HitTheWall()
+    {
+        Reset();
+    }
 }

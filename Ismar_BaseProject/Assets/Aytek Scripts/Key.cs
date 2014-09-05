@@ -33,8 +33,13 @@ public class Key : MonoBehaviour
         else if (other.tag.Equals("Wall"))
         {
             Debug.Log("You failed. Try Again");
+
+            SendMessageUpwards("HitTheWall");
+
             transform.position = initialPosition;
             velocity = Vector3.left * speed;
         }
     }
+
+
 }
