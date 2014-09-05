@@ -6,6 +6,7 @@ using Ubitrack;
 public class ErrorPoseSink : UbiTrackComponent {	
 	public UbitrackEventType ubitrackEvent = UbitrackEventType.Push;
 	public UbitrackRelativeToUnity relative = UbitrackRelativeToUnity.World;
+	public UbitrackApplyParts applyData = UbitrackApplyParts.Pose;
 		
 	protected SimpleApplicationPullSinkErrorPose m_posePull = null;
     protected SimpleErrorPose m_simplePose = null;
@@ -70,7 +71,7 @@ public class ErrorPoseSink : UbiTrackComponent {
 
         if (m_pose != null)
         {
-            UbiUnityUtils.setGameObjectPose(relative, gameObject, m_pose.data());
+            UbiUnityUtils.setGameObjectPose(relative, gameObject, m_pose.data(), applyData);
         }
         	
     }

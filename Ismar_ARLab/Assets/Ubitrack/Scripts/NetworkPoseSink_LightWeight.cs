@@ -9,6 +9,7 @@ using System.Threading;
 
 public class NetworkPoseSink_LightWeight : MonoBehaviour {
     public UbitrackRelativeToUnity relative = UbitrackRelativeToUnity.World;
+	public UbitrackApplyParts applyData = UbitrackApplyParts.Pose;
 	protected Thread receiveThread;    
     protected UdpClient client; 
 	public int port = 21844;
@@ -87,7 +88,7 @@ public class NetworkPoseSink_LightWeight : MonoBehaviour {
 	void Update () {
         if (m_newData != null)
         {
-            UbiUnityUtils.setGameObjectPose(relative, gameObject, m_newData);            
+			UbiUnityUtils.setGameObjectPose(relative, gameObject, m_newData, applyData);            
             m_newData = null;
 		}
 	}

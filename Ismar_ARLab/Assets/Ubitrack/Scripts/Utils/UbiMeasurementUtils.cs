@@ -14,6 +14,12 @@ public enum UbitrackEventType
     Push,
     Pull
 };
+public enum UbitrackApplyParts
+{
+	Rotation,
+	Translation,
+	Pose
+};
 
 public class UbiMeasurementUtils  {
 	

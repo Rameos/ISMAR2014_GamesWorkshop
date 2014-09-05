@@ -6,6 +6,7 @@ using Ubitrack;
 public class PoseSink : UbiTrackComponent {   
 	public UbitrackEventType ubitrackEvent = UbitrackEventType.Push;
 	public UbitrackRelativeToUnity relative = UbitrackRelativeToUnity.World;
+	public UbitrackApplyParts applyData = UbitrackApplyParts.Pose;
 
     protected SimpleApplicationPullSinkPose m_posePull = null;
     protected SimplePose m_simplePose = null;	
@@ -69,7 +70,7 @@ public class PoseSink : UbiTrackComponent {
 
         if (m_pose != null)
         {
-            UbiUnityUtils.setGameObjectPose(relative, gameObject, m_pose.data());
+            UbiUnityUtils.setGameObjectPose(relative, gameObject, m_pose.data(), applyData);
         }
         lastPose = m_pose;
     }   

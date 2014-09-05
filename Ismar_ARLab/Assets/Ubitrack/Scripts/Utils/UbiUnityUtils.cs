@@ -4,7 +4,7 @@ using System;
 
 public class UbiUnityUtils  {
 	
-	public static void setGameObjectPose (UbitrackRelativeToUnity relative, GameObject go, Pose pose)
+	public static void setGameObjectPose (UbitrackRelativeToUnity relative, GameObject go, Pose pose, UbitrackApplyParts applyData)
 	{
 		if (go.rigidbody != null) {
 			switch (relative) {
@@ -16,8 +16,10 @@ public class UbiUnityUtils  {
 			case UbitrackRelativeToUnity.World:
 				{
 
-					go.rigidbody.MovePosition (pose.pos);
-					go.rigidbody.MoveRotation (pose.rot);
+					if(applyData.Equals(UbitrackApplyParts.Pose) ||applyData.Equals(UbitrackApplyParts.Translation)) 
+						go.rigidbody.MovePosition (pose.pos);
+					if(applyData.Equals(UbitrackApplyParts.Pose) ||applyData.Equals(UbitrackApplyParts.Rotation)) 
+						go.rigidbody.MoveRotation (pose.rot);
 					break;
 				}
 			default:
@@ -28,15 +30,18 @@ public class UbiUnityUtils  {
 			switch (relative) {
 			case UbitrackRelativeToUnity.Local:
 				{
-					go.transform.localPosition = pose.pos;
-					go.transform.localRotation = pose.rot;
+					if(applyData.Equals(UbitrackApplyParts.Pose) ||applyData.Equals(UbitrackApplyParts.Translation)) 
+						go.transform.localPosition = pose.pos;
+					if(applyData.Equals(UbitrackApplyParts.Pose) ||applyData.Equals(UbitrackApplyParts.Rotation)) 
+						go.transform.localRotation = pose.rot;
 					break;
 				}
 			case UbitrackRelativeToUnity.World:
 				{
-
-					go.transform.position = pose.pos;
-					go.transform.rotation = pose.rot;
+					if(applyData.Equals(UbitrackApplyParts.Pose) ||applyData.Equals(UbitrackApplyParts.Translation)) 
+						go.transform.position = pose.pos;
+					if(applyData.Equals(UbitrackApplyParts.Pose) ||applyData.Equals(UbitrackApplyParts.Rotation)) 
+						go.transform.rotation = pose.rot;
 					break;
 				}
 			default:
