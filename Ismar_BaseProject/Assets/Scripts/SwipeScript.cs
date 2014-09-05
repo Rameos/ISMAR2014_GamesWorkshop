@@ -161,6 +161,7 @@ public class SwipeScript : MonoBehaviour
         {
             GameObject manager = GameObject.Find("GameManager");
             manager.GetComponent<HandleTarget>().ShowTarget();
+            manager.GetComponent<HandleTarget>().Victory();
         }
     }
 }

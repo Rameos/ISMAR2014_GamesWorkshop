@@ -4,22 +4,21 @@ using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
-    string textBuffer;
     public static Button buttonHide;
     public static Button buttonShow;
-    public static Text text;
+    public static GameObject lostObject;
     public static GameObject loader;
 
+    public GameObject lostObject1;
     public Button buttonHide1;
     public Button buttonShow1;
-    public Text text1;
     public GameObject loader1;
 
     void Start()
     {
         buttonHide = buttonHide1;
         buttonShow = buttonShow1;
-        text = text1;
+        lostObject = lostObject1;
         loader = loader1;
     }
 
@@ -27,14 +26,14 @@ public class UIManager : MonoBehaviour
     {
         buttonHide.gameObject.SetActive(false);
         buttonShow.gameObject.SetActive(true);
-        text.gameObject.SetActive(true);
+        lostObject.SetActive(true);
     }
 
     public static void HideCancelDialog()
     {
         buttonHide.gameObject.SetActive(true);
         buttonShow.gameObject.SetActive(false);
-        text.gameObject.SetActive(false);
+        lostObject.SetActive(false);
     }
 
     public static void ShowLoadingScreen()
@@ -47,5 +46,4 @@ public class UIManager : MonoBehaviour
         ShowLoadingScreen();
         Application.LoadLevelAsync(0);            
     }
-
 }

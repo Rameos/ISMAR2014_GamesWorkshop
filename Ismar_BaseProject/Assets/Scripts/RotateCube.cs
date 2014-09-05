@@ -7,7 +7,8 @@ public class RotateCube : MonoBehaviour
     public int currentField2;
     public int sideShowing;
     public int dirShowing;
-
+    public bool aligned;
+    public bool victoryTriggered;
     public GameObject location2;
 
     private SwipeScript swiper;
@@ -15,6 +16,7 @@ public class RotateCube : MonoBehaviour
     private Vector3 posEdit;
     private Vector3 targetLocation;
 
+    private MeshRenderer targetCube;
     private GameObject targetRotation;
 
     void Start()
@@ -25,6 +27,8 @@ public class RotateCube : MonoBehaviour
         posWork = transform.position;
         posEdit = location2.transform.position;
         targetLocation = posWork;
+
+        targetCube = GetComponentInChildren<MeshRenderer>();
     }
 
     public void SetTargetRotation(GameObject gameObject, SwipeScript.rotation dir)
@@ -115,9 +119,33 @@ public class RotateCube : MonoBehaviour
 
     void Update()
     {
-        if (gameObject.transform.rotation != targetRotation.transform.rotation)
-            gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, targetRotation.transform.rotation, 0.2f);
+        if (victoryTriggered)
+        {
+            targetCube.material.color = new Color(targetCube.material.color.r,
+                targetCube.material.color.g, targetCube.material.color.b,
+                targetCube.material.color.a - (1f * Time.deltaTime));
 
-        transform.position = Vector3.Lerp(transform.position, targetLocation, 0.3f);
+            if (GetComponent<MeshRenderer>().material.color.a <= 0)
+            {
+                Destroy(targetCube);
+            }
+        }
+
+        if (Vector3.Distance(transform.position, posEdit) < 0.1)
+        {
+            aligned = true;
+        }
+        else
+        {
+            aligned = false;
+        }
+
+        if (!victoryTriggered)
+        {
+            if (gameObject.transform.rotation != targetRotation.transform.rotation)
+                gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, targetRotation.transform.rotation, 0.2f);
+
+            transform.position = Vector3.Lerp(transform.position, targetLocation, 0.3f);
+        }
     }
 }

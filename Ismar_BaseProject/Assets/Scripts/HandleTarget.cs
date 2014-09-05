@@ -8,10 +8,46 @@ public class HandleTarget : MonoBehaviour
     public GameObject target1;
     public GameObject target2;
     public GameObject target3;
+    public GameObject safe;
     public Text text;
+
+    public static bool victoryTriggered;
+    private bool victory;
+
+    void Update()
+    {
+        if (victory)
+        {
+            GameObject[] cubeObjects = GameObject.FindGameObjectsWithTag("Cube");
+
+            foreach (GameObject cube in cubeObjects)
+            {
+                if (!cube.GetComponent<RotateCube>().aligned)
+                {
+                    return;
+                }
+            }
+            foreach (GameObject cube in cubeObjects)
+            {
+                cube.GetComponent<RotateCube>().victoryTriggered = true;
+            }
+
+            Destroy(target1);
+            Destroy(target2);
+            Destroy(target3);
+
+            safe.animation.Play("ArmatureAction");
+            victoryTriggered = true;
+            victory = false;
+        }
+
+    }
 
     public void ShowTarget()
     {
+        if (victoryTriggered)
+            return;
+
         GameObject[] cubeObjects = GameObject.FindGameObjectsWithTag("Cube");
 
         foreach (GameObject cube in cubeObjects)
@@ -30,5 +66,10 @@ public class HandleTarget : MonoBehaviour
             text.text = "Hide Target";
         else
             text.text = "Show Target";
+    }
+
+    public void Victory()
+    {
+        victory = true;
     }
 }
