@@ -9,6 +9,8 @@ public class RotateCube : MonoBehaviour
     public int dirShowing;
 
     public GameObject location2;
+
+    private SwipeScript swiper;
     private Vector3 posWork;
     private Vector3 posEdit;
     private Vector3 targetLocation;
@@ -102,10 +104,12 @@ public class RotateCube : MonoBehaviour
         if (posWork == targetLocation)
         {
             targetLocation = posEdit;
+            SwipeScript.moveable = false;
         }
         else
         {
             targetLocation = posWork;
+            SwipeScript.moveable = true;
         }
     }
 

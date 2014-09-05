@@ -9,6 +9,7 @@ public class SwipeScript : MonoBehaviour
 
     public Text matrixText1;
     public Text matrixText2;
+    public static bool moveable;
 
     private int[,] finalMatrix1 = new int[3, 3] { { 4, 2, 3 }, { 4, 1, 0 }, { 4, 5, 1 } };
     private int[,] finalMatrix2 = new int[3, 3] { { 2, 0, 5 }, { 2, 3, 3 }, { 0, 1, 2 } };
@@ -31,11 +32,12 @@ public class SwipeScript : MonoBehaviour
     void Start()
     {
         checkVictory();
+        moveable = true;
     }
 
     void Update()
     {
-        if (Input.touchCount <= 0)
+        if (Input.touchCount <= 0 || !moveable)
         {
             return;
         }
@@ -127,6 +129,8 @@ public class SwipeScript : MonoBehaviour
 
     private void Rotate(GameObject gameObject, rotation rotation)
     {
+        Debug.Log(moveable);
+
         RotateCube rotator = gameObject.GetComponent<RotateCube>();
         rotator.SetTargetRotation(gameObject, rotation);
 
@@ -161,9 +165,8 @@ public class SwipeScript : MonoBehaviour
 
         if (success)
         {
-            matrixText1.color = Color.green;
-            matrixText2.color = Color.green;
-            Debug.Log("Victory");
+            GameObject manager = GameObject.Find("GameManager");
+            manager.GetComponent<HandleTarget>().ShowTarget();
         }
     }
 }
