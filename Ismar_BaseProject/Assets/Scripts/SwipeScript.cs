@@ -126,8 +126,6 @@ public class SwipeScript : MonoBehaviour
 
     private void Rotate(GameObject gameObject, rotation rotation)
     {
-        Debug.Log(moveable);
-
         RotateCube rotator = gameObject.GetComponent<RotateCube>();
         rotator.SetTargetRotation(gameObject, rotation);
 

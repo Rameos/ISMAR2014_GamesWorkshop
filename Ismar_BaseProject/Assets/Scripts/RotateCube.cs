@@ -125,9 +125,9 @@ public class RotateCube : MonoBehaviour
                 targetCube.material.color.g, targetCube.material.color.b,
                 targetCube.material.color.a - (1f * Time.deltaTime));
 
-            if (GetComponent<MeshRenderer>().material.color.a <= 0)
+            if (targetCube.material.color.a <= 0)
             {
-                Destroy(targetCube);
+                Destroy(gameObject);
             }
         }
 
