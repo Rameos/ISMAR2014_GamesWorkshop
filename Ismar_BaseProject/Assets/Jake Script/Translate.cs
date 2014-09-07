@@ -18,12 +18,12 @@ public class Translate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		/*
 		GameObject.Find("Wall1").renderer.enabled = false;
 		GameObject.Find("Wall2").renderer.enabled = false;
 		GameObject.Find("Wall3").renderer.enabled = false;
 		GameObject.Find("Wall4").renderer.enabled = false;
-
+		*/
 		GameObject.Find("TetrisBook").renderer.enabled = TetrisBook;
 		GameObject.Find("TetrisBook").collider.enabled = TetrisBook;
 
@@ -116,21 +116,21 @@ public class Translate : MonoBehaviour {
 	{
 				if (GUI.RepeatButton (new Rect (260, 20, 230, 150), "Up")) {
 						//GameObject.Find("Player").transform.position += new Vector3 (0.05f,0f,0f);
-						GameObject.Find ("Player").transform.position += new Vector3 (0f, 0f, 0.05f);
+			GameObject.Find ("Player").transform.position -= new Vector3 (0.05f, 0f, 0f);
 				}
 
 				if (GUI.RepeatButton (new Rect (260, 320, 230, 150), "Down")) {
 						//GameObject.Find("Player").transform.position -= new Vector3 (0.05f,0f,0f);
-						GameObject.Find ("Player").transform.position -= new Vector3 (0f, 0f, 0.05f);
+			GameObject.Find ("Player").transform.position += new Vector3 (0.05f, 0f, 0f);
 				}
 
 				if (GUI.RepeatButton (new Rect (20, 180, 230, 150), "Left")) {
-						GameObject.Find ("Player").transform.position -= new Vector3 (0.05f, 0f, 0);
-				}
+			GameObject.Find ("Player").transform.position -= new Vector3 (0f, 0f, 0.05f);
+		}
 
 				if (GUI.RepeatButton (new Rect (500, 180, 230, 150), "Right")) {
-						GameObject.Find ("Player").transform.position += new Vector3 (0.05f, 0f, 0f);
-				}
+			GameObject.Find ("Player").transform.position += new Vector3 (0f, 0f, 0.05f);
+		}
 
 
 		switch(OkButton)
