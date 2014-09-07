@@ -9,35 +9,40 @@ public class Key : MonoBehaviour
 
 	void Start()
     {
-        velocity = Vector3.left * speed;
+        velocity = Vector3.zero;
 	}
 	
 	void Update()
     {
+        velocity = Vector3.Lerp(velocity, velocity.normalized, Time.deltaTime * 2);
+
         transform.position += velocity * Time.deltaTime;
 	}
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        Debug.LogError("!");
+        //Debug.LogError("!");
 
         if (other.name.Equals("Exit"))
         {
-            Debug.Log("You succesfully get the key out of the maze.");
+            SendMessageUpwards("WonTheGame");
+
+            //Debug.Log("You succesfully get the key out of the maze.");
         }
         else if (other.tag.Equals("ForceField"))
         {
-            Debug.Log("!");
-            velocity = other.transform.right;
+            //Debug.Log("!");
+            velocity = other.transform.right * (2 + velocity.magnitude);
         }
         else if (other.tag.Equals("Wall"))
         {
-            Debug.Log("You failed. Try Again");
+            //Debug.Log("You failed. Try Again");
+            velocity = Vector3.zero;
 
             SendMessageUpwards("HitTheWall");
 
-            transform.position = initialPosition;
-            velocity = Vector3.left * speed;
+            //transform.position = initialPosition;
+            //velocity = Vector3.left * speed;
         }
     }
 

@@ -4,74 +4,147 @@ using System.Collections.Generic;
 
 public class ForceGame : MonoBehaviour 
 {
-    List<GameObject> forceFields = new List<GameObject>();
-    public GameObject forceFieldPrefab;
-    GameObject arCamera;
-
-    public Texture crosshairTexture;
-    public float crossHairRadius = 20;
-    public bool snapToGrid = false;
-
-    public enum GameState 
+    public enum GameState
     {
+        Idle,
+        Intro,
         Running,
         Prompting,
         Win
     }
 
+    public GameObject forceFieldPrefab;
+
+    List<GameObject> forceFields = new List<GameObject>();
+
+    Key key;
+    Camera arCamera;
+
+    List<GameObject> walls;
+
+    Bounds bounds;
+
+    public GameState gameState;
+
+    public bool snapToGrid = false;
+
+    float introTimer = 0;
+    Vector3 lastWorldPosition = Vector3.zero;
+
+    void InitObjectCache()
+    {
+        arCamera = GameObject.Find("ARCamera").camera;
+        key = GameObject.Find("Key").GetComponent<Key>();
+        walls = new List<GameObject>(GameObject.FindGameObjectsWithTag("Wall"));
+        bounds = GameObject.Find("Bounds").collider.bounds;
+    }
+
+    void SetGameState(GameState gameState)
+    {
+        if (gameState == GameState.Idle)
+        {
+            for (int i = 0; i < walls.Count; i++)
+            {
+                walls[i].transform.localScale = Vector3.zero;
+            }
+        }
+        else if (gameState == GameState.Intro)
+        {
+            for (int i = 0; i < forceFields.Count; i++)
+            {
+                Destroy(forceFields[i]);
+            }
+
+            introTimer = 0;
+            key.transform.position = Vector3.zero;
+            key.velocity = Vector3.zero;
+        }
+        else if (gameState == GameState.Running)
+        {
+            key.velocity = Vector3.left;
+        }
+        else if (gameState == GameState.Prompting)
+        {
+        }
+        else if (gameState == GameState.Win)
+        {
+        }
+
+        this.gameState = gameState;
+    }
+
     void Awake()
     {
-        arCamera = GameObject.Find("ARCamera");
+        InitObjectCache();
+
+        SetGameState(GameState.Idle);
 	}
+
+    void Update()
+    {
+        if (gameState == GameState.Intro)
+        {
+            Intro();
+        }
+        else if (gameState == GameState.Running)
+        {
+            CreateForceFieldUsingSweepMotion();
+        }
+    }
+
+    public void OnTrackableDetected()
+    {
+        SetGameState(GameState.Intro);
+    }
 
     void OnGUI()
     {
-        Rect rect = new Rect(Screen.width / 2 - crossHairRadius, Screen.height / 2 - crossHairRadius, crossHairRadius * 2, crossHairRadius * 2);
+        if (gameState == GameState.Running)
+        {
+            if (GUI.Button(new Rect(10, 10, 400, 80), "RESTART"))
+            {
+                SetGameState(GameState.Intro);
+            }
+        }
+        else if (gameState == GameState.Prompting)
+        {
+            if (GUI.Button(new Rect(10, 10, 400, 80), "TRY AGAIN"))
+            {
+                SetGameState(GameState.Intro);
+            }
+        }
+        else if (gameState == GameState.Win)
+        {
+            GUI.Box(new Rect(Screen.width / 2 - 200, Screen.height / 2 - 40, 400, 80), "YOU FINISHED THE GAME");
 
-        //GUI.DrawTexture(rect, crosshairTexture);
+            if (GUI.Button(new Rect(10, 10, 400, 80), "RESTART"))
+            {
+                SetGameState(GameState.Intro);
+            }
+        }
     }
 
-    void CreateForceFieldUsingAngle()
+    void Intro()
     {
-        int i = 0;
-        while (i < Input.touchCount)
+        introTimer += Time.deltaTime;
+
+        for (int i = 0; i < walls.Count; i++)
         {
-            if (Input.GetTouch(i).phase == TouchPhase.Ended)
+            walls[i].transform.localScale = new Vector3(introTimer, introTimer, introTimer);
+        }
+
+        if (introTimer > 1)
+        {
+            for (int i = 0; i < walls.Count; i++)
             {
-                Vector2 touchPosition = Input.GetTouch(i).position;
-                Ray ray = arCamera.camera.ScreenPointToRay(touchPosition);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit))
-                {
-                    Vector3 rotation = Vector3.zero;
-
-                    Vector2 toTarget = hit.point - arCamera.transform.position;
-                    if (Mathf.Abs(toTarget.x) > Mathf.Abs(toTarget.y))
-                    {
-                        if (toTarget.x > 0)
-                            rotation.z = 0;
-                        else
-                            rotation.z = 180;
-                    }
-                    else
-                    {
-                        if (toTarget.y > 0)
-                            rotation.z = 90;
-                        else
-                            rotation.z = 270;
-                    }
-
-
-                    forceFields.Add(Instantiate(forceFieldPrefab, hit.point, Quaternion.Euler(rotation)) as GameObject);
-                }
+                walls[i].collider.enabled = true;
             }
 
-            ++i;
-        }	
-    }
+            key.GetComponent<Key>().velocity = Vector3.left;
 
-    Vector3 lastWorldPosition = Vector3.zero;
+            gameState = GameState.Running;
+        }
+    }
 
     void CreateForceFieldUsingSweepMotion()
     {
@@ -96,6 +169,9 @@ public class ForceGame : MonoBehaviour
                 Vector3 rotation = Vector3.zero;
                 Vector3 direction = hit.point - lastWorldPosition;
 
+                if (direction.magnitude < 0.5)
+                    return;
+
                 if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
                 {
                     if (direction.x > 0)
@@ -117,8 +193,8 @@ public class ForceGame : MonoBehaviour
                     lastWorldPosition.y = Mathf.RoundToInt(lastWorldPosition.y);
                 }
 
-
-                forceFields.Add(Instantiate(forceFieldPrefab, lastWorldPosition, Quaternion.Euler(rotation)) as GameObject);
+                if(bounds.Contains(lastWorldPosition))
+                    forceFields.Add(Instantiate(forceFieldPrefab, lastWorldPosition, Quaternion.Euler(rotation)) as GameObject);
             }
         }
 
@@ -186,22 +262,28 @@ public class ForceGame : MonoBehaviour
         }
     }
 	
-	void Update()
-    {
-        CreateForceFieldUsingSweepMotion();
-        //CreateForceFieldUsingAngle();
-	}
+
 
     void Reset()
     {
-        for (int i = 0; i < forceFields.Count; i++)
-        {
-            Destroy(forceFields[i]);
-        }
+
     }
+
+    #region MESSAGES
 
     void HitTheWall()
     {
+        gameState = GameState.Prompting;
+
         Reset();
     }
+
+    void WonTheGame()
+    {
+        key.velocity = Vector3.zero;
+
+        gameState = GameState.Win;
+    }
+
+    #endregion
 }
