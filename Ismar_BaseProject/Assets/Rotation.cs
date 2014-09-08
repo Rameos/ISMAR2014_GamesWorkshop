@@ -10,6 +10,6 @@ public class Rotation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.rotation = Input.gyro.attitude;
+        //transform.rotation = Input.gyro.attitude.eulerAngles.y;
 	}
 }

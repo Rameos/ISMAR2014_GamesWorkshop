@@ -11,41 +11,47 @@ public class GPSControllerScript : MonoBehaviour {
     private float longi2 = 11.66652F;
     private float lati3 = 48.26274F;
     private float longi3 = 11.66623F;
+    private float closeLat;
+    private float closeLong;
 
     public GPSTextScript GPSTextScript;
     public IndicatorScript indicatorScript;
+    public GameObject coordsys;
+    public GameObject leftArrow;
+    public GameObject rightArrow;
 
     private float distance1, distance2, distance3;
     public bool GPSOn;
     private string log;
     private int closestKey;
 
+    
+
 
     void Start()
     {
-        GPSOn = false;        
+        Input.gyro.enabled = true;
+        leftArrow.SetActive(false);
+        rightArrow.SetActive(false);
+        GPSOn = false;
+        StartGPS();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        float closest = -1;
+        float closestDistance = -1;
         if (GPSOn)
         {
             GetDistances();
-            closest = getClosest(distance1, distance2, distance3);            
-            indicatorScript.relativeSpeed(closest);            
-        }
-        GPSTextScript.changeText(Input.location.lastData.latitude, Input.location.lastData.longitude, log, closest, closestKey);
-        checkVictory();
+            closestDistance = getClosest(distance1, distance2, distance3);            
+            indicatorScript.relativeSpeed(closestDistance);
 
-        if (Input.gyro.enabled)
-        {
-            log = "GYRO ON!!";
+            // Not sure if Input.gyro.attitude.eulerAngles.y is the right axis
+            LeftOrRight(GetBearingTo(Input.location.lastData.latitude, Input.location.lastData.longitude, closeLat, closeLong), Input.gyro.attitude.eulerAngles.y);
         }
-        else
-        {
-            log = "GYRO OFF1!";
-        }
+        log = LeftOrRight(GetBearingTo(Input.location.lastData.latitude, Input.location.lastData.longitude, closeLat, closeLong), Input.gyro.attitude.eulerAngles.y);
+        GPSTextScript.changeText(Input.location.lastData.latitude, Input.location.lastData.longitude, log, closestDistance, closestKey);
+        checkVictory();
     }
 
     public void StartGPS()
@@ -80,7 +86,7 @@ public class GPSControllerScript : MonoBehaviour {
         float lastLati = Input.location.lastData.latitude;
         float lastLongi = Input.location.lastData.longitude;
 
-        if (!PlayerPrefsX.GetBool("GPS_key1", false))
+        if (!PlayerPrefsX.GetBool("GPS_key2", false))
         {
             distance1 = calculateDistance(lati1, longi1, lastLati, lastLongi);
         }
@@ -141,16 +147,19 @@ public class GPSControllerScript : MonoBehaviour {
         }
         float currentSmallest = d1;
 
-        closestKey = 1;
+        closeLat = lati1;
+        closeLong = longi1;
         if (d2 < currentSmallest)
         {
-            closestKey = 2;
+            closeLat = lati2;
+            closeLong = longi2;
             currentSmallest = d2;
         }
 
         if (d3 < currentSmallest)
         {
-            closestKey = 3;
+            closeLat = lati3;
+            closeLong = longi3;
             currentSmallest = d3;
         }
 
@@ -169,11 +178,111 @@ public class GPSControllerScript : MonoBehaviour {
         }
     }
 
-    private void ShowPicture(float distance, int closeKey)
+    private float GetBearingTo(float lat_a, float lng_a, float lat_b, float lng_b)
     {
-        if (distance < 10)
-        {
+        float lat1 = ToRadians(lat_a);
+        float lat2 = ToRadians(lat_b);
+        float dLon = ToRadians(lng_a-lng_b);
 
-        }
+        float y = Mathf.Sin(dLon) * Mathf.Cos(lat2);
+        float x = Mathf.Cos(lat1) * Mathf.Sin(lat2) - Mathf.Sin(lat1) * Mathf.Cos(lat2) * Mathf.Cos(dLon);
+        float brng = Mathf.Atan2(y, x);
+  
+        return (ToDegrees(brng)+360) % 360;
     }
+
+    private float ToRadians(float angle)
+    {
+        return (angle * Mathf.PI) / 180f;
+    }
+
+    private float ToDegrees(float rad)
+    {
+        return (rad * 180f) / Mathf.PI;
+    }
+
+    private string LeftOrRight(float rlBearing, float unityBearing)
+    {
+        string output = "rlBearing: " + rlBearing + " unityBearing: " + unityBearing;
+        if (rlBearing > 180)
+        {
+            rlBearing = rlBearing - 360;
+        }
+        if (unityBearing > 180)
+        {
+            unityBearing = unityBearing - 360;
+        }
+
+        if (unityBearing == rlBearing)
+        {
+            leftArrow.SetActive(false);
+            rightArrow.SetActive(false);
+            return "right direction";
+        }
+        if (unityBearing >= 0 && rlBearing <= 0)
+        {
+            if (Mathf.Abs(rlBearing) + unityBearing > 180)
+            {
+                leftArrow.SetActive(false);
+                rightArrow.SetActive(true);
+                return "turn right";
+            }
+            else
+            {
+                leftArrow.SetActive(true);
+                rightArrow.SetActive(false);
+                return "turn left";
+            }
+        }
+        if (unityBearing <= 0 && rlBearing >= 0)
+        {
+            if (Mathf.Abs(unityBearing) + rlBearing > 180)
+            {
+                leftArrow.SetActive(true);
+                rightArrow.SetActive(false);
+                return "turn left";
+            }
+            else
+            {
+                leftArrow.SetActive(false);
+                rightArrow.SetActive(true);
+                return "turn right";
+            }
+        }
+        if (unityBearing <= 0 && rlBearing <= 0)
+        {
+            if (unityBearing > rlBearing)
+            {
+                leftArrow.SetActive(true);
+                rightArrow.SetActive(false);
+                return "turn left";
+            }
+            else
+            {
+                leftArrow.SetActive(false);
+                rightArrow.SetActive(true);
+                return "turn right";
+            }
+        }
+        if (unityBearing >= 0 && rlBearing >= 0)
+        {
+            if (unityBearing > rlBearing)
+            {
+                leftArrow.SetActive(true);
+                rightArrow.SetActive(false);
+                return "turn left";
+            }
+            else
+            {
+                leftArrow.SetActive(false);
+                rightArrow.SetActive(true);
+                return "turn right";
+            }
+        }
+
+
+        return output;
+    }
+
+
 }

@@ -90,22 +90,25 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
 
         if (Application.loadedLevel == 0)
         {
-            if (mTrackableBehaviour.TrackableName.Equals("stone1") || mTrackableBehaviour.TrackableName.Equals("stone2") || mTrackableBehaviour.TrackableName.Equals("stone3") || mTrackableBehaviour.TrackableName.Equals("stone4") || mTrackableBehaviour.TrackableName.Equals("stone5") || mTrackableBehaviour.TrackableName.Equals("stone6") || mTrackableBehaviour.TrackableName.Equals("stone7") || mTrackableBehaviour.TrackableName.Equals("stone8"))
+            if (mTrackableBehaviour.TrackableName.Equals("butt") || mTrackableBehaviour.TrackableName.Equals("stone1") || mTrackableBehaviour.TrackableName.Equals("stone2") || mTrackableBehaviour.TrackableName.Equals("stone3") || mTrackableBehaviour.TrackableName.Equals("stone4") || mTrackableBehaviour.TrackableName.Equals("stone5") || mTrackableBehaviour.TrackableName.Equals("stone6") || mTrackableBehaviour.TrackableName.Equals("stone7") || mTrackableBehaviour.TrackableName.Equals("stone8"))
             {
+                UIManagerGPS.Toggle1();
                 hintCollector.found(1);
             }
-            if (mTrackableBehaviour.TrackableName.Equals("sign"))
+            if (mTrackableBehaviour.TrackableName.Equals("sign") || mTrackableBehaviour.TrackableName.Equals("back"))
             {
+                UIManagerGPS.Toggle2();
                 hintCollector.found(2);
             }
-            if (mTrackableBehaviour.TrackableName.Equals("gulli"))
+            if (mTrackableBehaviour.TrackableName.Equals("gulli") || mTrackableBehaviour.TrackableName.Equals("back"))
             {
+                UIManagerGPS.Toggle3();
                 hintCollector.found(3);
             }
-            if (mTrackableBehaviour.TrackableName.Equals("chips"))
+            if (mTrackableBehaviour.TrackableName.Equals("chips") || mTrackableBehaviour.TrackableName.Equals("tarmac"))
             {
-                UIManagerGPS.ShowLoadingScreen();
-                Application.LoadLevelAsync("Safepuzzle");
+               UIManagerGPS.ShowLoadingScreen();
+               Application.LoadLevelAsync("Safepuzzle");
             }
 
         }
