@@ -84,6 +84,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
     }
 
+
     private void OnTrackingLost()
     {
         Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);

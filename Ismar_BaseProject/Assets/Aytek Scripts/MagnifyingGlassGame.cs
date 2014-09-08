@@ -12,6 +12,11 @@ public class MagnifyingGlassGame : MonoBehaviour
     bool done = false;
     public float scale = 5;
 
+    void Awake()
+    {
+        //Screen.orientation = ScreenOrientation.LandscapeLeft;
+    }
+
 	void Start()
 	{
         arCamera = GameObject.Find("ARCamera").camera;

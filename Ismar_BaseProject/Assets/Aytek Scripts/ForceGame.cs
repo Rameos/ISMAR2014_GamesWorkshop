@@ -88,6 +88,7 @@ public class ForceGame : MonoBehaviour
 
     void Awake()
     {
+        //Screen.orientation = ScreenOrientation.AutoRotation;
         //InitObjectCache();
         //SetGameState(GameState.Idle);
         
