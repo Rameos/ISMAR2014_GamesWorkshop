@@ -22,9 +22,18 @@ public class UIManagerGPS : MonoBehaviour {
         toggle2 = toggler2;
         toggle3 = toggler3;
         loader = loader1;
-        toggle1.isOn = false;
-        toggle2.isOn = false;
-        toggle3.isOn = false;
+        if (!PlayerPrefsX.GetBool("GPS_key1", false))
+        {
+            toggle1.isOn = false;
+        }
+        if (!PlayerPrefsX.GetBool("GPS_key2", false))
+        {
+            toggle2.isOn = false;
+        }
+        if (!PlayerPrefsX.GetBool("GPS_key3", false))
+        {
+            toggle3.isOn = false;
+        }
         toggle1.interactable = false;
         toggle2.interactable = false;
         toggle3.interactable = false;
