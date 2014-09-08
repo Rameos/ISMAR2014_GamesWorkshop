@@ -82,10 +82,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         }
 
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
-
-        GameObject.Find("ForceGame").GetComponent<ForceGame>().OnTrackableDetected();
     }
-
 
     private void OnTrackingLost()
     {

@@ -3,5 +3,6 @@
   <Tracking>
     <ImageTarget name="ISMAR1" size="10.000000 14.134703" />
     <ImageTarget name="ISMAR2" size="10.000000 14.134703" />
+    <ImageTarget name="ISMAR3" size="10.000000 13.333333" />
   </Tracking>
 </QCARConfig>

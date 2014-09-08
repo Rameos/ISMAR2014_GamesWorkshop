@@ -73,8 +73,8 @@ public class MagnifyingGlassGame : MonoBehaviour
         float fov = arCamera.fieldOfView;
         float aspect = arCamera.aspect;
 
-        float yScale = transform.position.z * Mathf.Tan((fov / 2) * Mathf.Deg2Rad);
-        float xScale = yScale * aspect;
+        //float yScale = transform.position.z * Mathf.Tan((fov / 2) * Mathf.Deg2Rad);
+        //float xScale = yScale * aspect;
 
         background.transform.localScale = new Vector3(-aspect * 10, 10, 10);
     }

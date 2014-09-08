@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ForceGame : MonoBehaviour 
+public class ForceGame : MonoBehaviour
 {
     public enum GameState
     {
@@ -29,10 +29,16 @@ public class ForceGame : MonoBehaviour
     public bool snapToGrid = false;
 
     float introTimer = 0;
+    float gameTimer = 0;
     Vector3 lastWorldPosition = Vector3.zero;
+
+    ForceGameTrackableEventHandler trackable = null;
 
     void InitObjectCache()
     {
+        foreach (Transform t in trackable.children)
+            t.gameObject.SetActive(true);
+
         arCamera = GameObject.Find("ARCamera").camera;
         key = GameObject.Find("Key").GetComponent<Key>();
         walls = new List<GameObject>(GameObject.FindGameObjectsWithTag("Wall"));
@@ -55,12 +61,19 @@ public class ForceGame : MonoBehaviour
                 Destroy(forceFields[i]);
             }
 
+            foreach (GameObject wall in walls)
+            {
+                wall.collider.enabled = false;
+            }
+
             introTimer = 0;
             key.transform.position = Vector3.zero;
             key.velocity = Vector3.zero;
         }
         else if (gameState == GameState.Running)
         {
+            gameTimer = 0;
+
             key.velocity = Vector3.left;
         }
         else if (gameState == GameState.Prompting)
@@ -75,9 +88,9 @@ public class ForceGame : MonoBehaviour
 
     void Awake()
     {
-        InitObjectCache();
-
-        SetGameState(GameState.Idle);
+        //InitObjectCache();
+        //SetGameState(GameState.Idle);
+        
 	}
 
     void Update()
@@ -88,17 +101,46 @@ public class ForceGame : MonoBehaviour
         }
         else if (gameState == GameState.Running)
         {
-            CreateForceFieldUsingSweepMotion();
+            gameTimer += Time.deltaTime;
+
+            //Debug.Log(gameTimer.ToString("0.00"));
+            
+            CreateForceFieldUsingSwipeMotion();
         }
     }
 
-    public void OnTrackableDetected()
+    bool trackingInitialized = false;
+    string trackableName = "";
+
+    public void OnTrackableFound(string name, ForceGameTrackableEventHandler sender)
     {
-        SetGameState(GameState.Intro);
+        if (!trackingInitialized)
+        {
+            trackableName = name;
+            trackable = sender;
+
+            InitObjectCache();
+
+            SetGameState(GameState.Idle);
+            SetGameState(GameState.Intro);
+        }
+
+        if(sender.mTrackableBehaviour.TrackableName == trackableName)
+            Time.timeScale = 1;
+
+        trackingInitialized = true;
+    }
+
+    public void OnTrackableLost(string name, ForceGameTrackableEventHandler sender)
+    {
+        Time.timeScale = 0;
     }
 
     void OnGUI()
     {
+        GUI.skin.box.fontSize = Screen.height / 20;
+        GUI.skin.button.fontSize = Screen.height / 20;
+
         if (gameState == GameState.Running)
         {
             if (GUI.Button(new Rect(10, 10, 400, 80), "RESTART"))
@@ -115,7 +157,7 @@ public class ForceGame : MonoBehaviour
         }
         else if (gameState == GameState.Win)
         {
-            GUI.Box(new Rect(Screen.width / 2 - 200, Screen.height / 2 - 40, 400, 80), "YOU FINISHED THE GAME");
+            GUI.Box(new Rect(Screen.width / 2 - 200, Screen.height / 2 - 40, 400, 80), "TIME: " + gameTimer.ToString("0.00"));
 
             if (GUI.Button(new Rect(10, 10, 400, 80), "RESTART"))
             {
@@ -142,11 +184,11 @@ public class ForceGame : MonoBehaviour
 
             key.GetComponent<Key>().velocity = Vector3.left;
 
-            gameState = GameState.Running;
+            SetGameState(GameState.Running);
         }
     }
 
-    void CreateForceFieldUsingSweepMotion()
+    void CreateForceFieldUsingSwipeMotion()
     {
         if(Input.GetMouseButtonDown(0))
         {
@@ -198,8 +240,6 @@ public class ForceGame : MonoBehaviour
             }
         }
 
-
-
         int i = 0;
         while (i < Input.touchCount)
         {
@@ -232,6 +272,9 @@ public class ForceGame : MonoBehaviour
                     Vector3 rotation = Vector3.zero;
                     Vector3 direction = hit.point - lastWorldPosition;
 
+                    if (direction.magnitude < 0.5)
+                        return;
+
                     if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
                     {
                         if (direction.x > 0)
@@ -262,8 +305,6 @@ public class ForceGame : MonoBehaviour
         }
     }
 	
-
-
     void Reset()
     {
 

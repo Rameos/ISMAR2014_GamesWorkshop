@@ -19,7 +19,7 @@ public class Key : MonoBehaviour
         transform.position += velocity * Time.deltaTime;
 	}
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         //Debug.LogError("!");
 
@@ -32,7 +32,7 @@ public class Key : MonoBehaviour
         else if (other.tag.Equals("ForceField"))
         {
             //Debug.Log("!");
-            velocity = other.transform.right * (2 + velocity.magnitude);
+            //velocity = other.transform.right * 3;
         }
         else if (other.tag.Equals("Wall"))
         {
