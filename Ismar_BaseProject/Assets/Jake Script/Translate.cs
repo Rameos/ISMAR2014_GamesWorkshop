@@ -18,12 +18,12 @@ public class Translate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		/*
+
 		GameObject.Find("Wall1").renderer.enabled = false;
 		GameObject.Find("Wall2").renderer.enabled = false;
 		GameObject.Find("Wall3").renderer.enabled = false;
 		GameObject.Find("Wall4").renderer.enabled = false;
-		*/
+
 		GameObject.Find("TetrisBook").renderer.enabled = TetrisBook;
 		GameObject.Find("TetrisBook").collider.enabled = TetrisBook;
 
