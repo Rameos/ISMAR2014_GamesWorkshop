@@ -322,9 +322,22 @@ public class ForceGame : MonoBehaviour
 
     void WonTheGame()
     {
+        Debug.Log(trackableName);
+
         key.velocity = Vector3.zero;
 
         gameState = GameState.Win;
+
+        if (trackableName == "maze3")
+        {
+            Debug.Log("0 SOLVED");
+            GlobalData.Instance.gameSolved(MiniGame.EnergyMaze0);
+        }
+        else if (trackableName == "MazeTarget2")
+        {
+            Debug.Log("1 SOLVED");
+            GlobalData.Instance.gameSolved(MiniGame.EnergyMaze1);
+        }
     }
 
     #endregion
