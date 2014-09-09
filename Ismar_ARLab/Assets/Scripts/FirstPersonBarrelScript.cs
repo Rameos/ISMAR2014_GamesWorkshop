@@ -18,9 +18,9 @@ public class FirstPersonBarrelScript : MonoBehaviour {
 	//	target = GameObject.FindGameObjectWithTag("Player").transform.position;
 
 		transform.rotation = Random.rotation;
-		rotationSpeedX = Random.Range (0.1f,0.5f);
-		rotationSpeedY = Random.Range (0.1f,0.5f);
-		rotationSpeedZ = Random.Range (0.1f,0.5f);
+		rotationSpeedX = Random.Range (1f,5f);
+		rotationSpeedY = Random.Range (1f,5f);
+		rotationSpeedZ = Random.Range (1f,5f);
 
 	}
 
