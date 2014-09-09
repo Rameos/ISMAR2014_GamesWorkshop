@@ -6,11 +6,12 @@ public class FirstPersonSwordScript : MonoBehaviour {
 
 
 	public GameObject explosion;
+	public bool isUmbrella;
 
 
 	// Use this for initialization
 	void Start () {
-		
+		isUmbrella = true;
 	}
 	
 	// Update is called once per frame
@@ -23,9 +24,18 @@ public class FirstPersonSwordScript : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider barrel)
 	{
-		if (barrel.tag == "Barrel") 
-		{
-			//Debug.Log ("Barrel hit the sword");
+		if (barrel.GetComponent<FirstPersonBarrelScript>() != null) 
+		{	if (barrel.GetComponent<FirstPersonBarrelScript>().tetris)
+			{
+
+				{if (isUmbrella)
+					GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonPlayerStatsScript>().lives--;
+					else
+						GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonPlayerStatsScript>().score++;
+				}
+			}
+
+			else {
 			if (barrel.gameObject.GetComponent<FirstPersonBarrelScript>().isExplosive)
 			{
 				GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonPlayerStatsScript>().lives--;
@@ -34,10 +44,11 @@ public class FirstPersonSwordScript : MonoBehaviour {
 			}
 
 			else
-			{
+			{if (isUmbrella)
 			GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonPlayerStatsScript>().score++;
-			FirstPersonBarrelScript.speed += 0.01f;
-			}
+				else
+					GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonPlayerStatsScript>().lives--;
+				}}
 
 			Destroy (barrel.gameObject);
 		}

@@ -2,9 +2,11 @@
 using System.Collections;
 
 public class DonkeyScript : MonoBehaviour {
-	public GameObject left, right, top, bottom;
+	public GameObject left, right;
 	public float moveSpeed, heightMultiplier, fMultiplier;
 	private int directionX;
+
+
 
 	private float xSin;
 

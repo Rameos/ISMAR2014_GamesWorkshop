@@ -25,18 +25,22 @@ public class Input_Password : MonoBehaviour {
         posYInputField = Screen.height * yPosScale;
 
         inputInLine = GUI.TextField(new Rect(posXInputField, posYInputField, 150, 25), inputInLine);
+
+		if(GUI.Button(new Rect(posXInputField+160, posYInputField, 50, 25), "Login")) {
+			if (inputInLine == password){
+				Debug.Log ("good ");
+				FadeManager.FadeOut();
+			}
+			else
+			{
+				Debug.Log ("bad ");
+				inputInLine = "Password incorrect!";
+			}
+		}
     }
 	
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return))
-        {
-            if (inputInLine == password)
-			FadeManager.FadeOut();
-			else
-			{
-				inputInLine = "Password incorrect!";
-			}
-        }
+
     }
 }

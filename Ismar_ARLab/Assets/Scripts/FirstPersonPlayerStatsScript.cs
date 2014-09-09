@@ -34,4 +34,17 @@ public class FirstPersonPlayerStatsScript : MonoBehaviour {
 		GUI.TextArea (new Rect(0f,0f, 100f, 25f), "Lives: "+lives);
 		GUI.TextArea (new Rect(0f,25f, 100f, 25f), "Score: "+score);
 	}
+
+	void OnTriggerEnter (Collider other)
+	{	
+		if (other.GetComponent<FirstPersonBarrelScript> () == null)
+						return;
+		if (other.gameObject.GetComponent<FirstPersonBarrelScript>().isExplosive == false)
+			{
+				lives--;
+			}
+			
+			Destroy (other.gameObject);
+
+	}
 }
