@@ -26,13 +26,10 @@ public class Raycasting : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start()
+    {
 		previousPositionY = Input.mousePosition.y;			
 		myCamera = GameObject.Find("ARCamera");	
-
-
-
 	}
 
 
@@ -44,12 +41,6 @@ public class Raycasting : MonoBehaviour {
 		GameObject.Find ("Word2").renderer.enabled = false;
 		GameObject.Find ("Word3").renderer.enabled = false;
 		GameObject.Find ("Word4").renderer.enabled = false;
-		GameObject.Find ("Word5").renderer.enabled = false;
-		GameObject.Find ("Word6").renderer.enabled = false;
-		GameObject.Find ("Word7").renderer.enabled = false;
-		GameObject.Find ("Word8").renderer.enabled = false;
-		GameObject.Find ("Word9").renderer.enabled = false;
-		GameObject.Find ("Word10").renderer.enabled = false;
 
 
 		GameObject.Find ("Counter2").GetComponent<TextMesh> ().text = WordCount.ToString ();
@@ -60,34 +51,40 @@ public class Raycasting : MonoBehaviour {
 		
 		Debug.DrawRay(myCamera.transform.position, ray.direction);
 
-		switch(LastScreen)
-		{
-			case 0:
-			GameObject.Find("LastBackground").renderer.enabled = false;
-			GameObject.Find("SourceCode").renderer.enabled = false;
-			GameObject.Find("LastBackground").collider.enabled = false;
-			GameObject.Find("SourceCode").collider.enabled = false;
-			break;
+        //switch(LastScreen)
+        //{
+        //    case 0:
+        //    GameObject.Find("LastBackground").renderer.enabled = false;
+        //    GameObject.Find("SourceCode").renderer.enabled = false;
+        //    GameObject.Find("LastBackground").collider.enabled = false;
+        //    GameObject.Find("SourceCode").collider.enabled = false;
+        //    break;
 
-			case 1:
-			GameObject.Find("LastBackground").renderer.enabled = true;
-			GameObject.Find("SourceCode").renderer.enabled = true;
-			GameObject.Find("LastBackground").collider.enabled = true;
-			GameObject.Find("SourceCode").collider.enabled = true;
-			break;
-
-
-		}
+        //    case 1:
+        //    GameObject.Find("LastBackground").renderer.enabled = true;
+        //    GameObject.Find("SourceCode").renderer.enabled = true;
+        //    GameObject.Find("LastBackground").collider.enabled = true;
+        //    GameObject.Find("SourceCode").collider.enabled = true;
+        //    break;
 
 
-		if (WordCount == 10) {
+        //}
+
+
+		if (WordCount == 4)
+        {
+            Debug.Log("YOU WON THE GAME");
+
+
+            GlobalData.Instance.gameSolved(MiniGame.MagnifyingLense);
 
 			//StartCoroutine(GetBluePrints());
-			StartCoroutine(TurnOffColliders());
-			StartCoroutine(TurnAllOff());
-			GameObject.Find("Counter").renderer.enabled = false;
-			GameObject.Find("Counter2").renderer.enabled = false;
-			LastScreen = 1;
+			//StartCoroutine(TurnOffColliders());
+			//StartCoroutine(TurnAllOff());
+			//GameObject.Find("Counter").renderer.enabled = false;
+			//GameObject.Find("Counter2").renderer.enabled = false;
+			
+            //LastScreen = 1;
 		}
 
 		if (hitter.collider != null && hitter.collider.name == "Word1") {		
@@ -135,76 +132,76 @@ public class Raycasting : MonoBehaviour {
 			
 		}
 
-		if (hitter.collider != null && hitter.collider.name == "Word5") {		
+        //if (hitter.collider != null && hitter.collider.name == "Word5") {		
 			
 			
-			WordVisable = 5;
-			if(Word5 == false)
-			{
-				WordCount += 1;
-				Word5 = true;
-			}
+        //    WordVisable = 5;
+        //    if(Word5 == false)
+        //    {
+        //        WordCount += 1;
+        //        Word5 = true;
+        //    }
 			
-		}
+        //}
 
 
 
-		if (hitter.collider != null && hitter.collider.name == "Word6") {		
+        //if (hitter.collider != null && hitter.collider.name == "Word6") {		
 			
 			
-			WordVisable = 6;
-			if(Word6 == false)
-			{
-				WordCount += 1;
-				Word6 = true;
-			}
-		}
+        //    WordVisable = 6;
+        //    if(Word6 == false)
+        //    {
+        //        WordCount += 1;
+        //        Word6 = true;
+        //    }
+        //}
 
-		if (hitter.collider != null && hitter.collider.name == "Word7") {		
+        //if (hitter.collider != null && hitter.collider.name == "Word7") {		
 			
 			
-			WordVisable = 7;
-			if(Word7 == false)
-			{
-				WordCount += 1;
-				Word7 = true;
-			}
-		}
-
-
-		if (hitter.collider != null && hitter.collider.name == "Word8") {		
-			
-			
-			WordVisable = 8;
-			if(Word8 == false)
-			{
-				WordCount += 1;
-				Word8 = true;
-			}
-		}
+        //    WordVisable = 7;
+        //    if(Word7 == false)
+        //    {
+        //        WordCount += 1;
+        //        Word7 = true;
+        //    }
+        //}
 
 
-		if (hitter.collider != null && hitter.collider.name == "Word9") {		
+        //if (hitter.collider != null && hitter.collider.name == "Word8") {		
 			
 			
-			WordVisable = 9;
-			if(Word9 == false)
-			{
-				WordCount += 1;
-				Word9 = true;
-			}
-		}
+        //    WordVisable = 8;
+        //    if(Word8 == false)
+        //    {
+        //        WordCount += 1;
+        //        Word8 = true;
+        //    }
+        //}
 
-		if (hitter.collider != null && hitter.collider.name == "Word10") {		
+
+        //if (hitter.collider != null && hitter.collider.name == "Word9") {		
 			
 			
-			WordVisable = 10;
-			if(Word10 == false)
-			{
-				WordCount += 1;
-				Word10 = true;
-			}
-		}
+        //    WordVisable = 9;
+        //    if(Word9 == false)
+        //    {
+        //        WordCount += 1;
+        //        Word9 = true;
+        //    }
+        //}
+
+        //if (hitter.collider != null && hitter.collider.name == "Word10") {		
+			
+			
+        //    WordVisable = 10;
+        //    if(Word10 == false)
+        //    {
+        //        WordCount += 1;
+        //        Word10 = true;
+        //    }
+        //}
 
 		switch (WordVisable) 
 		{
@@ -236,59 +233,55 @@ public class Raycasting : MonoBehaviour {
 			
 			break;
 
-		case 5:
+        //case 5:
 			
-			StartCoroutine(TurnAllOff());
-			GameObject.Find("Text5").renderer.enabled = true;
+        //    StartCoroutine(TurnAllOff());
+        //    GameObject.Find("Text5").renderer.enabled = true;
 			
-			break;
+        //    break;
 		
-		case 6:
+        //case 6:
 			
-			StartCoroutine(TurnAllOff());
-			GameObject.Find("Text6").renderer.enabled = true;
+        //    StartCoroutine(TurnAllOff());
+        //    GameObject.Find("Text6").renderer.enabled = true;
 			
-			break;
+        //    break;
 
-		case 7:
+        //case 7:
 			
-			StartCoroutine(TurnAllOff());
-			GameObject.Find("Text7").renderer.enabled = true;
+        //    StartCoroutine(TurnAllOff());
+        //    GameObject.Find("Text7").renderer.enabled = true;
 			
-			break;
+        //    break;
 
-		case 8:
+        //case 8:
 			
-			StartCoroutine(TurnAllOff());
-			GameObject.Find("Text8").renderer.enabled = true;
+        //    StartCoroutine(TurnAllOff());
+        //    GameObject.Find("Text8").renderer.enabled = true;
 			
-			break;
+        //    break;
 
-		case 9:
+        //case 9:
 			
-			StartCoroutine(TurnAllOff());
-			GameObject.Find("Text9").renderer.enabled = true;
+        //    StartCoroutine(TurnAllOff());
+        //    GameObject.Find("Text9").renderer.enabled = true;
 			
-			break;
+        //    break;
 
-		case 10:
+        //case 10:
 			
-			StartCoroutine(TurnAllOff());
-			GameObject.Find("Text10").renderer.enabled = true;
+        //    StartCoroutine(TurnAllOff());
+        //    GameObject.Find("Text10").renderer.enabled = true;
 			
-			break;
-		
-
-
+        //    break;
 		}
-	
 	}
 
-	public IEnumerator GetBluePrints()
-	{
-		GameObject.Find ("FinishedText").GetComponent<TextMesh>().text = "Blueprints Found";
-		yield return new WaitForSeconds (1);
-	}
+    //public IEnumerator GetBluePrints()
+    //{
+    //    GameObject.Find ("FinishedText").GetComponent<TextMesh>().text = "Blueprints Found";
+    //    yield return new WaitForSeconds (1);
+    //}
 
 	IEnumerator TurnOffColliders()
 	{
@@ -296,12 +289,12 @@ public class Raycasting : MonoBehaviour {
 		GameObject.Find("Word2").collider.enabled = false;
 		GameObject.Find("Word3").collider.enabled = false;
 		GameObject.Find("Word4").collider.enabled = false;
-		GameObject.Find("Word5").collider.enabled = false;
-		GameObject.Find("Word6").collider.enabled = false;
-		GameObject.Find("Word7").collider.enabled = false;
-		GameObject.Find("Word8").collider.enabled = false;
-		GameObject.Find("Word9").collider.enabled = false;
-		GameObject.Find("Word10").collider.enabled = false;
+        //GameObject.Find("Word5").collider.enabled = false;
+        //GameObject.Find("Word6").collider.enabled = false;
+        //GameObject.Find("Word7").collider.enabled = false;
+        //GameObject.Find("Word8").collider.enabled = false;
+        //GameObject.Find("Word9").collider.enabled = false;
+        //GameObject.Find("Word10").collider.enabled = false;
 		
 		yield return new WaitForSeconds(0.5f);
 
@@ -315,12 +308,12 @@ public class Raycasting : MonoBehaviour {
 		GameObject.Find("Text2").renderer.enabled = false;
 		GameObject.Find("Text3").renderer.enabled = false;
 		GameObject.Find("Text4").renderer.enabled = false;
-		GameObject.Find("Text5").renderer.enabled = false;
-		GameObject.Find("Text6").renderer.enabled = false;
-		GameObject.Find("Text7").renderer.enabled = false;
-		GameObject.Find("Text8").renderer.enabled = false;
-		GameObject.Find("Text9").renderer.enabled = false;
-		GameObject.Find("Text10").renderer.enabled = false;
+        //GameObject.Find("Text5").renderer.enabled = false;
+        //GameObject.Find("Text6").renderer.enabled = false;
+        //GameObject.Find("Text7").renderer.enabled = false;
+        //GameObject.Find("Text8").renderer.enabled = false;
+        //GameObject.Find("Text9").renderer.enabled = false;
+        //GameObject.Find("Text10").renderer.enabled = false;
 
 		yield return new WaitForSeconds(0.5f);
 	}

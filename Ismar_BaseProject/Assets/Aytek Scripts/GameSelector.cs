@@ -26,7 +26,7 @@ public class GameSelector : MonoBehaviour
 
         isMarkerLocated = true;
 
-        if (name == "Lens1" || name == "Lens2" || name == "Lens3")
+        if (name == "Lens3")
         {
             notification = "Starting the Magnifying Glass game";
             sceneName = "MagnifyIntro";
@@ -82,6 +82,7 @@ public class GameSelector : MonoBehaviour
 
     void LoadGame()
     {
+        Debug.Log("Loading new level");
         Application.LoadLevel(sceneName);
     }
 }

@@ -4,12 +4,8 @@ using System.Collections.Generic;
 
 public enum MiniGame
 {
-	MagnifyingLense0 = 0,
-	MagnifyingLense1,
-	MagnifyingLense2,
-	MagnifyingLenseComplete,
-	EnergyMaze0,
-	EnergyMaze1,
+	MagnifyingLense,
+	EnergyMaze,
 	Library,
 	GPSGame
 };

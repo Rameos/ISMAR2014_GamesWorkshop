@@ -158,11 +158,11 @@ public class ForceGame : MonoBehaviour
         }
         else if (gameState == GameState.Win)
         {
-            GUI.Box(new Rect(Screen.width / 2 - 200, Screen.height / 2 - 40, 400, 80), "TIME: " + gameTimer.ToString("0.00"));
+            GUI.Box(new Rect(Screen.width / 2 - 200, Screen.height / 2 - 40, 400, 80), "CONGRATULATIONS\nTIME: " + gameTimer.ToString("0.00"));
 
-            if (GUI.Button(new Rect(10, 10, 400, 80), "RESTART"))
+            if (GUI.Button(new Rect(10, 10, 400, 80), "EXIT TO MAIN MENU"))
             {
-                SetGameState(GameState.Intro);
+                Application.LoadLevel("GameSelector");
             }
         }
     }
@@ -331,12 +331,12 @@ public class ForceGame : MonoBehaviour
         if (trackableName == "maze3")
         {
             Debug.Log("0 SOLVED");
-            GlobalData.Instance.gameSolved(MiniGame.EnergyMaze0);
+            GlobalData.Instance.gameSolved(MiniGame.EnergyMaze);
         }
         else if (trackableName == "MazeTarget2")
         {
             Debug.Log("1 SOLVED");
-            GlobalData.Instance.gameSolved(MiniGame.EnergyMaze1);
+            GlobalData.Instance.gameSolved(MiniGame.EnergyMaze);
         }
     }
 
