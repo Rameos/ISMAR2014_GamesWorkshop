@@ -12,6 +12,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ForceGame.unity
   - enabled: 1
+    path: Assets/Scenes/GPSscene.unity
+  - enabled: 1
+    path: Assets/Scenes/Safepuzzle.unity
+  - enabled: 1
     path: Assets/MagnifyIntro.unity
   - enabled: 1
     path: Assets/Scenes/MagnifyingGlassGame.unity

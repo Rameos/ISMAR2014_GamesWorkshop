@@ -62,7 +62,7 @@ public class GlobalData  {
 
 	public void gameSolved(MiniGame game) {
 		string key = "solvedGame_"+ game.ToString();
-		PlayerPrefs.SetInt(1);
+		//PlayerPrefs.SetInt(1);
 	}
 
 	public float getGameValue(MiniGame game, string keySuffix){
