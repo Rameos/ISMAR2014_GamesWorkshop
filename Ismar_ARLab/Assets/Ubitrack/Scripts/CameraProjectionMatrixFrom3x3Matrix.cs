@@ -35,7 +35,7 @@ public class CameraProjectionMatrixFrom3x3Matrix : UbiTrackComponent {
             
             Matrix4x4 mProj;
             mProj = CameraUtils.constructProjectionMatrix3x3(intrinsics.data(), standardWidth, standardHeight, nearClipping, farClipping);
-            Debug.Log(mProj);
+         
             camera.projectionMatrix = mProj;
         }
         else

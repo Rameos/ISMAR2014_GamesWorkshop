@@ -6,18 +6,20 @@ public class DonkeyScript : MonoBehaviour {
 	public float moveSpeed, heightMultiplier, fMultiplier;
 	private int directionX;
 
+	public GameObject[] prefabs = new GameObject[4];
 
 
 	private float xSin;
 
 
 	public float cooldownTime;
-	public GameObject barrelPrefab;
+
 	private bool barrelReady;
 	// Use this for initialization
 	void Start () {
 		directionX = 1;
 		xSin = 0;
+
 
 
 		barrelReady = false;
@@ -37,7 +39,7 @@ public class DonkeyScript : MonoBehaviour {
 
 		if (barrelReady) 
 		{
-			GameObject barrelInstance = (GameObject)Instantiate(barrelPrefab);
+			GameObject barrelInstance = (GameObject)Instantiate(prefabs[Random.Range(0,4)]);
 			barrelInstance.transform.position = gameObject.transform.position;
 			barrelReady = false;
 			StartCoroutine (barrelCD());

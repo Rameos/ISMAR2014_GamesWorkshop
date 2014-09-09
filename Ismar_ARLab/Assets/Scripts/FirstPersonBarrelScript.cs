@@ -16,11 +16,7 @@ public class FirstPersonBarrelScript : MonoBehaviour {
 		rigidbody.AddForce(new Vector3(0,0.01f,tetris?Random.Range(-0.01f,-0.35f):Random.Range(0.01f,0.35f)));
 	
 	//	target = GameObject.FindGameObjectWithTag("Player").transform.position;
-	int r = Random.Range (0, 5); if (!tetris && r >= 4) {
-						isExplosive = true;
-						gameObject.renderer.material.color = Color.red;
-		} else
-						isExplosive = false;
+
 		transform.rotation = Random.rotation;
 		rotationSpeedX = Random.Range (0.1f,0.5f);
 		rotationSpeedY = Random.Range (0.1f,0.5f);

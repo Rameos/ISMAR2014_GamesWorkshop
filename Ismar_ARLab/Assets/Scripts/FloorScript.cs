@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FloorScript : MonoBehaviour {
 	
-	public static int lives;
+
 	
 	// Use this for initialization
 	void Start () {
@@ -16,9 +16,9 @@ public class FloorScript : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider other)
-	{	
-		if (other.gameObject.GetComponent<FirstPersonBarrelScript> () != null && !other.gameObject.GetComponent<FirstPersonBarrelScript> ().tetris) {
-						lives--;
+	{	Debug.Log ("meow");
+		if (other.gameObject.GetComponent<FirstPersonBarrelScript> () != null && !other.gameObject.GetComponent<FirstPersonBarrelScript> ().isExplosive) {
+			GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonPlayerStatsScript>().lives--;
 						Destroy (other.gameObject);
 				}
 
