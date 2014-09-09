@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UTQLResponse name="ARLabGame" xsi:schemaLocation="http://ar.in.tum.de/ubitrack/utql http://ar.in.tum.de/files/ubitrack/utql/utql_types.xsd" xmlns="http://ar.in.tum.de/ubitrack/utql" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Pattern name="ARTTracker" id="pattern_1">
+        <Output>
+            <Node name="Art" id="node_1" displayName="A.R.T. Tracker">
+                <GuiPos x="339" y="179"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-supernode" value="true" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5000" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Node>
+            <Node name="Body" displayName="ARTSword" id="node_4">
+                <GuiPos x="179" y="389"/>
+            </Node>
+            <Edge name="ArtToTarget" source="Art" destination="Body">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artBodyId" value="1" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artType" value="6dmt" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Output>
+        <DataflowConfiguration>
+            <UbitrackLib class="ArtTracker"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="720 340" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="ARTTracker" id="pattern_2">
+        <Output>
+            <Node name="Art" id="node_1">
+                <GuiPos x="339" y="179"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5000" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Node>
+            <Node name="Body" displayName="ARTShield" id="node_3">
+                <GuiPos x="11" y="409"/>
+            </Node>
+            <Edge name="ArtToTarget" source="Art" destination="Body">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artBodyId" value="1" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artType" value="6d" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Output>
+        <DataflowConfiguration>
+            <UbitrackLib class="ArtTracker"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="460 340" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="KinectImage" id="pattern_3">
+        <Output>
+            <Node name="Kinect" id="node_2" displayName="Kinect">
+                <GuiPos x="800" y="294"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-supernode" value="true" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Node>
+            <Node name="ImagePlane" displayName="Dis Image" id="node_11">
+                <GuiPos x="1225" y="102"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-supernode" value="true" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Node>
+            <Edge name="Output" source="Kinect" destination="ImagePlane">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="targetID" value="0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="onlyPlayer" value="0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="Image" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Output>
+        <DataflowConfiguration>
+            <UbitrackLib class="KinectImage"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="1010 0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="KinectSkeleton" id="pattern_4">
+        <Output>
+            <Node name="HipCenter" id="node_6">
+                <GuiPos x="608" y="624"/>
+            </Node>
+            <Node name="ShoulderCenter">
+                <GuiPos x="1338" y="374"/>
+            </Node>
+            <Node name="Head">
+                <GuiPos x="1218" y="224"/>
+            </Node>
+            <Node name="Kinect" id="node_2">
+                <GuiPos x="800" y="294"/>
+            </Node>
+            <Node name="KneeLeft">
+                <GuiPos x="2188" y="784"/>
+            </Node>
+            <Node name="AnkleRight">
+                <GuiPos x="2788" y="1064"/>
+            </Node>
+            <Node name="HandLeft">
+                <GuiPos x="1468" y="664"/>
+            </Node>
+            <Node name="WristLeft">
+                <GuiPos x="828" y="434"/>
+            </Node>
+            <Node name="WristRight">
+                <GuiPos x="1828" y="904"/>
+            </Node>
+            <Node name="FootLeft">
+                <GuiPos x="2428" y="824"/>
+            </Node>
+            <Node name="ElbowLeft">
+                <GuiPos x="988" y="424"/>
+            </Node>
+            <Node name="Spine">
+                <GuiPos x="908" y="504"/>
+            </Node>
+            <Node name="ElbowRight">
+                <GuiPos x="1728" y="634"/>
+            </Node>
+            <Node name="HandRight">
+                <GuiPos x="1948" y="744"/>
+            </Node>
+            <Node name="AnkleLeft">
+                <GuiPos x="2308" y="984"/>
+            </Node>
+            <Node name="ShoulderLeft">
+                <GuiPos x="1078" y="314"/>
+            </Node>
+            <Node name="HipRight">
+                <GuiPos x="2548" y="1024"/>
+            </Node>
+            <Node name="ShoulderRight">
+                <GuiPos x="1688" y="534"/>
+            </Node>
+            <Node name="FootRight">
+                <GuiPos x="2908" y="904"/>
+            </Node>
+            <Node name="HipLeft">
+                <GuiPos x="2068" y="944"/>
+            </Node>
+            <Node name="KneeRight">
+                <GuiPos x="2668" y="864"/>
+            </Node>
+            <Edge name="HandLeftPos" source="WristLeft" destination="HandLeft">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="KneeRightPos" source="HipRight" destination="KneeRight">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="AnkleLeftPos" source="KneeLeft" destination="AnkleLeft">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="FootLeftPos" source="AnkleLeft" destination="FootLeft">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="ShoulderCenterPos" source="Spine" destination="ShoulderCenter">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="WristRightPos" source="ElbowRight" destination="WristRight">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="AnkleRightPos" source="KneeRight" destination="AnkleRight">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="Output" source="Kinect" destination="HipCenter">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="targetID" value="0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="KneeLeftPos" source="HipLeft" destination="KneeLeft">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="HipLeftPos" source="HipCenter" destination="HipLeft">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="ShoulderRightPos" source="ShoulderCenter" destination="ShoulderRight">
+                <GuiLandmark x="1176" y="397"/>
+                <GuiLabelPos x="1408" y="464"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="ShoulderLeftPos" source="ShoulderCenter" destination="ShoulderLeft">
+                <GuiLandmark x="1149" y="424"/>
+                <GuiLabelPos x="1193" y="459"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="FootRightPos" source="AnkleRight" destination="FootRight">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="WristLeftPos" source="ElbowLeft" destination="WristLeft">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="ElbowRightPos" source="ShoulderRight" destination="ElbowRight">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="SpinePos" source="HipCenter" destination="Spine">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="HeadPos" source="ShoulderCenter" destination="Head">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="HipRightPos" source="HipCenter" destination="HipRight">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="HandRightPos" source="WristRight" destination="HandRight">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="ElbowLeftPos" source="ShoulderLeft" destination="ElbowLeft">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Output>
+        <DataflowConfiguration>
+            <UbitrackLib class="KinectSkeleton"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="scale" value="1.0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="0 340" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="ApplicationPushSinkPose" id="Shield">
+        <Input>
+            <Node name="A" id="node_8">
+                <GuiPos x="323" y="623"/>
+            </Node>
+            <Node name="B" id="node_3">
+                <GuiPos x="11" y="409"/>
+            </Node>
+            <Edge name="Input" source="A" destination="B" pattern-ref="pattern_13" edge-ref="AC">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Input>
+        <DataflowConfiguration>
+            <UbitrackLib class="ApplicationPushSinkPose"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="520 680" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="ApplicationPushSinkPose" id="Sword">
+        <Input>
+            <Node name="A" id="node_8">
+                <GuiPos x="323" y="623"/>
+            </Node>
+            <Node name="B" id="node_4">
+                <GuiPos x="179" y="389"/>
+            </Node>
+            <Edge name="Input" source="A" destination="B" pattern-ref="pattern_12" edge-ref="AC">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Input>
+        <DataflowConfiguration>
+            <UbitrackLib class="ApplicationPushSinkPose"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="780 680" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="ApplicationPushSinkPose" id="HipCenter">
+        <Input>
+            <Node name="A" id="node_8">
+                <GuiPos x="323" y="623"/>
+            </Node>
+            <Node name="B" id="node_6">
+                <GuiPos x="608" y="624"/>
+            </Node>
+            <Edge name="Input" source="A" destination="B" pattern-ref="pattern_8" edge-ref="AC">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Input>
+        <DataflowConfiguration>
+            <UbitrackLib class="ApplicationPushSinkPose"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="110 680" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="PoseMultiplication" id="pattern_8">
+        <Input>
+            <Node name="A" id="node_8">
+                <GuiPos x="323" y="623"/>
+            </Node>
+            <Node name="B" id="node_2">
+                <GuiPos x="800" y="294"/>
+            </Node>
+            <Node name="C" id="node_6">
+                <GuiPos x="608" y="624"/>
+            </Node>
+            <Edge name="AB" source="A" destination="B" pattern-ref="pattern_9" edge-ref="AC">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="BC" source="B" destination="C" pattern-ref="pattern_4" edge-ref="Output">
+                <GuiLandmark x="627" y="448"/>
+                <GuiLabelPos x="631" y="511"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="targetID" value="0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Input>
+        <Output>
+            <Edge name="AC" source="A" destination="C">
+                <GuiLandmark x="290" y="676"/>
+                <GuiLabelPos x="412" y="713"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Output>
+        <DataflowConfiguration>
+            <UbitrackLib class="PoseMultiplication"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="110 510" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="PoseMultiplication" id="pattern_9">
+        <Input>
+            <Node name="A" id="node_8">
+                <GuiPos x="323" y="623"/>
+            </Node>
+            <Node name="B" id="node_1">
+                <GuiPos x="339" y="179"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5000" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Node>
+            <Node name="C" id="node_2">
+                <GuiPos x="800" y="294"/>
+            </Node>
+            <Edge name="AB" source="A" destination="B" pattern-ref="pattern_20" edge-ref="AC">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="BC" source="B" destination="C" pattern-ref="pattern_10" edge-ref="Output">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Input>
+        <Output>
+            <Edge name="AC" source="A" destination="C">
+                <GuiLandmark x="610" y="276"/>
+                <GuiLabelPos x="631" y="279"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Output>
+        <DataflowConfiguration>
+            <UbitrackLib class="PoseMultiplication"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="230 340" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="PoseCalibReader" id="pattern_10">
+        <Output>
+            <Node name="A" displayName="A.R.T. Tracker" id="node_1">
+                <GuiPos x="339" y="179"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5000" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Node>
+            <Node name="B" displayName="Kinect" id="node_2">
+                <GuiPos x="800" y="294"/>
+            </Node>
+            <Edge name="Output" source="A" destination="B">
+                <GuiLandmark x="613" y="364"/>
+                <GuiLabelPos x="633" y="397"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Output>
+        <DataflowConfiguration>
+            <UbitrackLib class="PoseCalibReader"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="file" value="C:\ISMAR2014\ISMAR_Workshop\ARLab_CalibrationFiles\art2kinect.calib" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="230 170" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="PoseMultiplication" id="pattern_12">
+        <Input>
+            <Node name="A" id="node_8">
+                <GuiPos x="323" y="623"/>
+            </Node>
+            <Node name="B" id="node_1">
+                <GuiPos x="339" y="179"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5000" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Node>
+            <Node name="C" id="node_4">
+                <GuiPos x="179" y="389"/>
+            </Node>
+            <Edge name="AB" source="A" destination="B" pattern-ref="pattern_20" edge-ref="AC">
+                <GuiLandmark x="368" y="535"/>
+                <GuiLabelPos x="327" y="410"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="BC" source="B" destination="C" pattern-ref="pattern_1" edge-ref="ArtToTarget">
+                <GuiLandmark x="306" y="243"/>
+                <GuiLabelPos x="276" y="269"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artBodyId" value="1" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artType" value="6dmt" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Input>
+        <Output>
+            <Edge name="AC" source="A" destination="C">
+                <GuiLandmark x="310" y="548"/>
+                <GuiLabelPos x="277" y="521"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Output>
+        <DataflowConfiguration>
+            <UbitrackLib class="PoseMultiplication"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="780 510" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="PoseMultiplication" id="pattern_13">
+        <Input>
+            <Node name="A" id="node_8">
+                <GuiPos x="323" y="623"/>
+            </Node>
+            <Node name="B" id="node_1">
+                <GuiPos x="339" y="179"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5000" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Node>
+            <Node name="C" id="node_3">
+                <GuiPos x="11" y="409"/>
+            </Node>
+            <Edge name="AB" source="A" destination="B" pattern-ref="pattern_20" edge-ref="AC">
+                <GuiLandmark x="368" y="535"/>
+                <GuiLabelPos x="327" y="410"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="BC" source="B" destination="C" pattern-ref="pattern_2" edge-ref="ArtToTarget">
+                <GuiLandmark x="289" y="224"/>
+                <GuiLabelPos x="186" y="263"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artBodyId" value="1" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artType" value="6d" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Input>
+        <Output>
+            <Edge name="AC" source="A" destination="C">
+                <GuiLandmark x="602" y="409"/>
+                <GuiLabelPos x="623" y="412"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Output>
+        <DataflowConfiguration>
+            <UbitrackLib class="PoseMultiplication"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="520 510" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="ImageUndistortion" id="pattern_14">
+        <Input>
+            <Node name="Camera" id="node_2">
+                <GuiPos x="800" y="294"/>
+            </Node>
+            <Node name="ImagePlaneB" id="node_11">
+                <GuiPos x="1225" y="102"/>
+            </Node>
+            <Node name="ImagePlaneA" id="node_10">
+                <GuiPos x="945" y="0"/>
+            </Node>
+            <Edge name="Input" source="Camera" destination="ImagePlaneB" pattern-ref="pattern_3" edge-ref="Output">
+                <GuiLandmark x="944" y="257"/>
+                <GuiLabelPos x="988" y="230"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="targetID" value="0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="onlyPlayer" value="0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="Image" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="CameraIntrinsics" source="ImagePlaneA" destination="ImagePlaneB" pattern-ref="pattern_15" edge-ref="Output">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="3x3Matrix" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Input>
+        <Output>
+            <Edge name="Output" source="Camera" destination="ImagePlaneA">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="Image" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Output>
+        <DataflowConfiguration>
+            <UbitrackLib class="UndistortImage"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="1130 170" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="CameraIntrinsicsCalibReader" id="pattern_15">
+        <Output>
+            <Node name="A" displayName="Undis Image" id="node_10">
+                <GuiPos x="945" y="0"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-supernode" value="true" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Node>
+            <Node name="B" displayName="Dis Image" id="node_11">
+                <GuiPos x="1225" y="102"/>
+            </Node>
+            <Edge name="Output" source="A" destination="B">
+                <GuiLandmark x="625" y="174"/>
+                <GuiLabelPos x="645" y="207"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="3x3Matrix" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Output>
+        <DataflowConfiguration>
+            <UbitrackLib class="CameraIntrinsicsCalibReader"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="file" value="C:\ISMAR2014\ISMAR_Workshop\ARLab_CalibrationFiles\Camera\Kinect2\kinect.calib" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="1240 0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="TextureUpdateOpenGL" id="TextureIDOpenGLStuff">
+        <Input>
+            <Node name="A" id="node_2">
+                <GuiPos x="800" y="294"/>
+            </Node>
+            <Node name="B" id="node_10">
+                <GuiPos x="945" y="0"/>
+            </Node>
+            <Edge name="Input" source="A" destination="B" pattern-ref="pattern_14" edge-ref="Output">
+                <GuiLandmark x="806" y="262"/>
+                <GuiLabelPos x="788" y="217"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="Image" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="push" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Input>
+        <Output>
+            <Edge name="InputTextureID" source="A" destination="B">
+                <GuiLandmark x="848" y="231"/>
+                <GuiLabelPos x="867" y="144"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="3DPosition" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Output>
+        <DataflowConfiguration>
+            <UbitrackLib class="TextureUpdateOpenGL"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="1130 340" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="Matrix3x3CalibReader" id="pattern_17">
+        <Output>
+            <Node name="A" displayName="Kinect" id="node_2">
+                <GuiPos x="800" y="294"/>
+            </Node>
+            <Node name="B" displayName="Undis Image" id="node_10">
+                <GuiPos x="945" y="0"/>
+            </Node>
+            <Edge name="Output" source="A" destination="B">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="3x3Matrix" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Output>
+        <DataflowConfiguration>
+            <UbitrackLib class="Matrix3x3CalibReader"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="file" value="C:\ISMAR2014\ISMAR_Workshop\ARLab_CalibrationFiles\Camera\Kinect2\kinect.calib" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="1470 0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="ApplicationPullSinkMatrix3x3" id="CameraIntrinsics">
+        <Input>
+            <Node name="A" id="node_2">
+                <GuiPos x="800" y="294"/>
+            </Node>
+            <Node name="B" id="node_10">
+                <GuiPos x="945" y="0"/>
+            </Node>
+            <Edge name="Input" source="A" destination="B" pattern-ref="pattern_17" edge-ref="Output">
+                <GuiLandmark x="767" y="269"/>
+                <GuiLabelPos x="746" y="224"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="3x3Matrix" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Input>
+        <DataflowConfiguration>
+            <UbitrackLib class="ApplicationPullSinkMatrix3x3"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="1470 170" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="PoseCalibReader" id="pattern_11">
+        <Output>
+            <Node name="A" displayName="Unity" id="node_8">
+                <GuiPos x="323" y="623"/>
+            </Node>
+            <Node name="B" displayName="A.R.T. Tracker" id="node_13">
+                <GuiPos x="549" y="359"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-supernode" value="true" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Node>
+            <Edge name="Output" source="A" destination="B">
+                <GuiLandmark x="352" y="513"/>
+                <GuiLabelPos x="320" y="396"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Output>
+        <DataflowConfiguration>
+            <UbitrackLib class="PoseCalibReader"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="file" value="C:\ISMAR2014\ISMAR_Workshop\ARLab_CalibrationFiles\unity2art.calib" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="350 0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="StaticPose" id="pattern_19">
+        <Output>
+            <Node name="A" displayName="A.R.T. Tracker" id="node_13">
+                <GuiPos x="549" y="359"/>
+            </Node>
+            <Node name="B" displayName="A.R.T. Tracker" id="node_1">
+                <GuiPos x="339" y="179"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5000" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Node>
+            <Edge name="AB" source="A" destination="B">
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="staticPosition" value="0.0  0.0  0.0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="staticRotation" value="0.0  0.0  0.0  1.0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Output>
+        <DataflowConfiguration>
+            <UbitrackLib class="StaticPose"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="580 0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="PoseMultiplication" id="pattern_20">
+        <Input>
+            <Node name="A" id="node_8">
+                <GuiPos x="323" y="623"/>
+            </Node>
+            <Node name="B" id="node_13">
+                <GuiPos x="549" y="359"/>
+            </Node>
+            <Node name="C" id="node_1">
+                <GuiPos x="339" y="179"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5000" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Node>
+            <Edge name="AB" source="A" destination="B" pattern-ref="pattern_11" edge-ref="Output">
+                <GuiLandmark x="434" y="518"/>
+                <GuiLabelPos x="463" y="461"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+            <Edge name="BC" source="B" destination="C" pattern-ref="pattern_19" edge-ref="AB">
+                <GuiLandmark x="505" y="356"/>
+                <GuiLabelPos x="460" y="332"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="staticPosition" value="0.0  0.0  0.0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="staticRotation" value="0.0  0.0  0.0  1.0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Input>
+        <Output>
+            <Edge name="AC" source="A" destination="C">
+                <GuiLandmark x="368" y="535"/>
+                <GuiLabelPos x="327" y="410"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Output>
+        <DataflowConfiguration>
+            <UbitrackLib class="PoseMultiplication"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="540 170" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="ApplicationPullSinkPosition" id="TextureID">
+        <Input>
+            <Node name="A" id="node_2">
+                <GuiPos x="800" y="294"/>
+            </Node>
+            <Node name="B" id="node_10">
+                <GuiPos x="945" y="0"/>
+            </Node>
+            <Edge name="Input" source="A" destination="B" pattern-ref="TextureIDOpenGLStuff" edge-ref="InputTextureID">
+                <GuiLandmark x="561" y="154"/>
+                <GuiLabelPos x="581" y="187"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="3DPosition" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Input>
+        <DataflowConfiguration>
+            <UbitrackLib class="ApplicationPullSinkPosition"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="1130 510" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+    <Pattern name="ApplicationPullSinkPose" id="CameraPose">
+        <Input>
+            <Node name="A" id="node_8">
+                <GuiPos x="323" y="623"/>
+            </Node>
+            <Node name="B" id="node_2">
+                <GuiPos x="800" y="294"/>
+            </Node>
+            <Edge name="Input" source="A" destination="B" pattern-ref="pattern_9" edge-ref="AC">
+                <GuiLandmark x="173" y="730"/>
+                <GuiLabelPos x="193" y="763"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="type" value="6D" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="mode" value="pull" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+            </Edge>
+        </Input>
+        <DataflowConfiguration>
+            <UbitrackLib class="ApplicationPullSinkPose"/>
+            <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-guipos" value="0 0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+        </DataflowConfiguration>
+    </Pattern>
+</UTQLResponse>
