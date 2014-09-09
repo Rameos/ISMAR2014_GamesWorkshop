@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="gulli" size="237.000000 316.000000" />
+    <ImageTarget name="tarmac" size="235.000000 164.500000" />
+    <ImageTarget name="stone8" size="235.000000 132.187500" />
+    <ImageTarget name="stone5" size="235.000000 132.187500" />
+    <ImageTarget name="stone7" size="235.000000 132.187500" />
+    <ImageTarget name="chips" size="235.000000 164.500000" />
+    <ImageTarget name="stone2" size="235.000000 132.187500" />
+    <ImageTarget name="wall2" size="235.000000 132.187500" />
+    <ImageTarget name="stone4" size="235.000000 132.187500" />
+    <ImageTarget name="wall1" size="235.000000 132.187500" />
+    <ImageTarget name="stone6" size="235.000000 132.187500" />
+    <ImageTarget name="stone3" size="235.000000 132.187500" />
+    <ImageTarget name="butt" size="235.000000 235.000000" />
+    <ImageTarget name="back" size="235.000000 176.250000" />
+    <ImageTarget name="wall3" size="250.000000 140.625000" />
+    <ImageTarget name="stone1" size="235.000000 132.187500" />
+    <ImageTarget name="sign" size="200.000000 199.434494" />
+  </Tracking>
+</QCARConfig>
