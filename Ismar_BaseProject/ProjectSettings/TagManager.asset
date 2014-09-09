@@ -5,6 +5,10 @@ TagManager:
   tags:
   - Fademanager
   - 
+  - Key
+  - Wall
+  - ForceField
+  - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
   Builtin Layer 2: Ignore Raycast
@@ -38,7 +42,11 @@ TagManager:
   User Layer 30: 
   User Layer 31: 
   m_SortingLayers:
-  - name: Default
-    userID: 0
-    uniqueID: 0
+  - name: New Layer 1
+    userID: 1
+    uniqueID: 681880521
+    locked: 0
+  - name: New Layer 2
+    userID: 2
+    uniqueID: 2218674557
     locked: 0
