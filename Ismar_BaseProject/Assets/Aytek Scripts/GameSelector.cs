@@ -7,6 +7,8 @@ public class GameSelector : MonoBehaviour
     string sceneName = "";
     string notification = "";
 
+    bool isMapActive = false;
+
 	void Start()
 	{
 	
@@ -52,6 +54,24 @@ public class GameSelector : MonoBehaviour
 
     void OnGUI()
     {
+        GUI.skin.box.fontSize = Screen.height / 20;
+        GUI.skin.button.fontSize = Screen.height / 20;
+
+        if (!isMapActive)
+        {
+            if (GUI.Button(new Rect(10, 10, 400, 80), "OPEN MAP"))
+            {
+                isMapActive = true;
+            }
+        }
+        else
+        {
+            if (GUI.Button(new Rect(10, 10, 400, 80), "CLOSE MAP"))
+            {
+                isMapActive = false;
+            }
+        }
+
         if (isMarkerLocated)
         {
             GUI.skin.box.wordWrap = true;
