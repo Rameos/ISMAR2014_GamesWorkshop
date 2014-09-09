@@ -4,6 +4,7 @@ using System.Collections;
 public class IntroScript : MonoBehaviour
 {
     string instructionText = @"Use the magnifying glass to scan different Ismar posters and find the hidden game functions. Once all functions are discovered you must put them in the blank spots on the blueprints to obtain the clue. Tap your screen to start.";
+
     void Start()
     {
 

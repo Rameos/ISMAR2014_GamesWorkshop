@@ -81,6 +81,7 @@ public class ForceGame : MonoBehaviour
         }
         else if (gameState == GameState.Win)
         {
+            key.velocity = Vector3.zero;
         }
 
         this.gameState = gameState;
@@ -103,8 +104,6 @@ public class ForceGame : MonoBehaviour
         else if (gameState == GameState.Running)
         {
             gameTimer += Time.deltaTime;
-
-            //Debug.Log(gameTimer.ToString("0.00"));
             
             CreateForceFieldUsingSwipeMotion();
         }
@@ -151,6 +150,8 @@ public class ForceGame : MonoBehaviour
         }
         else if (gameState == GameState.Prompting)
         {
+            GUI.Box(new Rect(Screen.width / 4, Screen.height / 4, Screen.width / 2, Screen.height / 2), "YOU HIT THE WALL");
+
             if (GUI.Button(new Rect(10, 10, 400, 80), "TRY AGAIN"))
             {
                 SetGameState(GameState.Intro);
@@ -158,7 +159,7 @@ public class ForceGame : MonoBehaviour
         }
         else if (gameState == GameState.Win)
         {
-            GUI.Box(new Rect(Screen.width / 2 - 200, Screen.height / 2 - 40, 400, 80), "TIME: " + gameTimer.ToString("0.00"));
+            GUI.Box(new Rect(Screen.width / 4, Screen.height / 4, Screen.width / 2, Screen.height / 2), "CONGRATULATIONS\nTIME: " + gameTimer.ToString("0.00"));
 
             if (GUI.Button(new Rect(10, 10, 400, 80), "RESTART"))
             {
@@ -305,26 +306,18 @@ public class ForceGame : MonoBehaviour
             ++i;
         }
     }
-	
-    void Reset()
-    {
 
-    }
 
     #region MESSAGES
 
     void HitTheWall()
     {
         gameState = GameState.Prompting;
-
-        Reset();
     }
 
     void WonTheGame()
     {
-        key.velocity = Vector3.zero;
-
-        gameState = GameState.Win;
+        SetGameState(GameState.Win);
     }
 
     #endregion
