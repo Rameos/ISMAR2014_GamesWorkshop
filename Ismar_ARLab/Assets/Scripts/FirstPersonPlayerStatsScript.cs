@@ -39,7 +39,7 @@ public class FirstPersonPlayerStatsScript : MonoBehaviour {
 	{	
 		if (other.GetComponent<FirstPersonBarrelScript> () == null)
 						return;
-		if (other.gameObject.GetComponent<FirstPersonBarrelScript>().isExplosive == false)
+		if (other.gameObject.GetComponent<FirstPersonBarrelScript>().tetris == false)
 			{
 				lives--;
 			}

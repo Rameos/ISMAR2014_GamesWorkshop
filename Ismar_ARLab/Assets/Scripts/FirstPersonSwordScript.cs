@@ -16,8 +16,11 @@ public class FirstPersonSwordScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//	gameObject.transform.RotateAround (pivot.transform.position, Vector3.forward, Input.GetAxis ("Horizontal") * rotationSpeed*-1f);
-		
+		float angle = 180.0f-Vector3.Angle (Vector3.up, transform.rotation * Vector3.up);
+		isUmbrella = angle < 45.0f;
+
+
+
 		
 		
 	}
@@ -28,9 +31,8 @@ public class FirstPersonSwordScript : MonoBehaviour {
 		{	if (barrel.GetComponent<FirstPersonBarrelScript>().tetris)
 			{
 
-				{if (isUmbrella)
-					GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonPlayerStatsScript>().lives--;
-					else
+				{if (!isUmbrella)
+
 						GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonPlayerStatsScript>().score++;
 				}
 			}
@@ -46,8 +48,7 @@ public class FirstPersonSwordScript : MonoBehaviour {
 			else
 			{if (isUmbrella)
 			GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonPlayerStatsScript>().score++;
-				else
-					GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonPlayerStatsScript>().lives--;
+				
 				}}
 
 			Destroy (barrel.gameObject);

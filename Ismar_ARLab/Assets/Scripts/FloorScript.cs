@@ -16,12 +16,10 @@ public class FloorScript : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider other)
-	{	Debug.Log ("meow");
-		if (other.gameObject.GetComponent<FirstPersonBarrelScript> () != null && !other.gameObject.GetComponent<FirstPersonBarrelScript> ().isExplosive) {
-			GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonPlayerStatsScript>().lives--;
-						Destroy (other.gameObject);
-				}
+	{	
 
+						Destroy (other.gameObject);
+				
 
 
 
