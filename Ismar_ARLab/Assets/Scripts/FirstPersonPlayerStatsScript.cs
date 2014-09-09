@@ -11,8 +11,8 @@ public class FirstPersonPlayerStatsScript : MonoBehaviour {
 		lives = 5;
 		score = 0;
 		targetScore = 15;
-
-
+		GameObject.FindGameObjectWithTag("Donkey").GetComponent<Animator>().SetBool(Animator.StringToHash("hit"), false);
+	
 
 
 	}
@@ -42,9 +42,17 @@ public class FirstPersonPlayerStatsScript : MonoBehaviour {
 		if (other.gameObject.GetComponent<FirstPersonBarrelScript>().tetris == false)
 			{
 				lives--;
+			GameObject.FindGameObjectWithTag("Donkey").GetComponent<Animator>().SetBool(Animator.StringToHash("hit"), true);
+			StartCoroutine(AnimationRoutine());
 			}
 			
 			Destroy (other.gameObject);
 
+	}
+
+	IEnumerator AnimationRoutine()
+	{
+		yield return new WaitForSeconds (2f);
+		GameObject.FindGameObjectWithTag("Donkey").GetComponent<Animator>().SetBool(Animator.StringToHash("hit"), false);
 	}
 }
