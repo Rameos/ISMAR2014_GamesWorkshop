@@ -19,8 +19,6 @@ public class ForceField : MonoBehaviour
 	    
 	}
 
-
-
     void OnTriggerStay(Collider other)
     {
         if (other.tag.Equals("Key"))

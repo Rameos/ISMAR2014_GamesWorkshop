@@ -21,8 +21,6 @@ public class Key : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        //Debug.LogError("!");
-
         if (other.name.Equals("Exit"))
         {
             SendMessageUpwards("WonTheGame");
