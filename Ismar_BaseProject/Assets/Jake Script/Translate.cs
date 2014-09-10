@@ -31,6 +31,7 @@ public class Translate : MonoBehaviour {
 		{
 			GameObject.Find("BookCase10").renderer.enabled = false;
 			TetrisBook = true;
+            
 			OkButton = 0;
 		}
 
@@ -106,6 +107,8 @@ public class Translate : MonoBehaviour {
 		{
 			GameObject.Find("InfoText").GetComponent<TextMesh>().text = "Clue Found";
 			GameObject.Find("InfoText").renderer.enabled = true;
+            GlobalData.Instance.gameSolved(MiniGame.Library);
+            Application.LoadLevel("GameSelector");
 		}
 
 

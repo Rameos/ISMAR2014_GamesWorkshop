@@ -57,22 +57,24 @@ public class GameSelector : MonoBehaviour
         if (isMarkerLocated)
             return;
 
-        isMarkerLocated = true;
+        
 
         if (name == "Lens3")
         {
             if (!GlobalData.Instance.isGameSolved(MiniGame.MagnifyingLense))
             {
-            notification = "Starting the Magnifying Glass game";
-            sceneName = "MagnifyIntro";
-            LoadGame();
+                isMarkerLocated = true;
+                notification = "Starting the Lost Sourcecode";
+                sceneName = "MagnifyIntro";
+                LoadGame();
             }
         }
         else if ((name == "maze3" || name == "MazeTarget2"))
         {
             if (!GlobalData.Instance.isGameSolved(MiniGame.EnergyMaze))
             {
-                notification = "Starting the Energymaze game";
+                isMarkerLocated = true;
+                notification = "Starting the Energymaze";
                 sceneName = "ForceGameInstructions";
                 LoadGame();
             }
@@ -81,7 +83,8 @@ public class GameSelector : MonoBehaviour
         {
             if(!GlobalData.Instance.isGameSolved(MiniGame.Library))
             {
-                notification = "Starting the Light game";
+                isMarkerLocated = true;
+                notification = "Starting the Missing Candles";
                 sceneName = "LibraryInfo";
                 LoadGame();
             }
@@ -90,7 +93,8 @@ public class GameSelector : MonoBehaviour
         {
             if(!GlobalData.Instance.isGameSolved(MiniGame.GPSGame))
             {
-                notification = "Starting the GPS game";
+                isMarkerLocated = true;
+                notification = "Starting the Melodic Save";
                 sceneName = "GPSscene";
                 LoadGame();
             }
