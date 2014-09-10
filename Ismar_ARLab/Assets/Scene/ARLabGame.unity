@@ -6000,7 +6000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a39a8b3bb72b27b4397c85fd09b66755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 5
+  lives: 10
   score: 0
   targetScore: 6
   exp: {fileID: 639802631}

@@ -4,13 +4,13 @@ using System.Collections;
 public class FirstPersonPlayerStatsScript : MonoBehaviour {
 	
 	
-	public int lives, score, targetScore;
+	public int lives = 10, score=0, targetScore=6;
 	public AudioSource exp, normal;
 	// Use this for initialization
 	void Start () {
-		lives = 5;
+		lives = 10;
 		score = 0;
-		targetScore = 15;
+		targetScore = 6;
 		GameObject.FindGameObjectWithTag("Donkey").GetComponent<Animator>().SetBool(Animator.StringToHash("hit"), false);
 	
 
