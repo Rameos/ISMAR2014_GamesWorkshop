@@ -43,4 +43,12 @@ public class CameraProjectionMatrixFrom3x3Matrix : UbiTrackComponent {
             throw new Exception("unable to get 3x3 matrix");
         }
     }
+
+	void OnPreRender () {
+		GL.SetRevertBackfacing (true);
+	}
+	
+	void OnPostRender () {
+		GL.SetRevertBackfacing (false);
+	}
 }

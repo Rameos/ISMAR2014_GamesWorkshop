@@ -24,7 +24,8 @@ Shader "Custom/UbitrackSimpleARShaderFlip" {
 			float2 screenUV = (IN.screenPos.xy / IN.screenPos.w);		
 						
 			
-			screenUV.x = screenUV.x * _UbiWidthFactor;
+			screenUV.x = (1.0f - screenUV.x) * _UbiWidthFactor;
+			//screenUV.x = screenUV.x * _UbiWidthFactor;
 			screenUV.y = (1.0f - screenUV.y) * _UbiHeightFactor;
 			
 			half4 c = tex2D (_MainTex, screenUV);

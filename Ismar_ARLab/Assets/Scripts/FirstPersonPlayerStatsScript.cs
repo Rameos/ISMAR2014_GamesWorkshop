@@ -26,6 +26,9 @@ public class FirstPersonPlayerStatsScript : MonoBehaviour {
 		{GameObject.Find ("Ubitrack").GetComponent<SimpleFacade> ().stopUbiTrack ();
 			Application.LoadLevel (2);
 				}
+
+	
+
 	}
 
 	
@@ -33,6 +36,9 @@ public class FirstPersonPlayerStatsScript : MonoBehaviour {
 	{
 		GUI.TextArea (new Rect(0f,0f, 100f, 25f), "Lives: "+lives);
 		GUI.TextArea (new Rect(0f,25f, 100f, 25f), "Score: "+score);
+
+		if(Input.GetKeyDown("p"))
+			score++;
 	}
 
 	void OnTriggerEnter (Collider other)

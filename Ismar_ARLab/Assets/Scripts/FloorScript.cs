@@ -17,8 +17,8 @@ public class FloorScript : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other)
 	{	
-
-						Destroy (other.gameObject);
+		if(!other.gameObject.tag.Equals("Tool"))
+			Destroy (other.gameObject);
 				
 
 

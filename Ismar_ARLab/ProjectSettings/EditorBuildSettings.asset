@@ -14,4 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/FailureScreen.unity
   - enabled: 1
-    path: Assets/Scene/WinScreen.unity
+    path: Assets/Scene/WinSceen2.unity

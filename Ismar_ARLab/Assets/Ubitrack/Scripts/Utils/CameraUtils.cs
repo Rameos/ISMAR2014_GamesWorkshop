@@ -81,6 +81,8 @@ class CameraUtils
         float b = 0.0f;
 
 
+	
+
         float norm = Mathf.Sqrt(i3x3[6] * i3x3[6] + i3x3[7] * i3x3[7] + i3x3[8] * i3x3[8]);
 
         float add = far * near * norm;
@@ -121,6 +123,9 @@ class CameraUtils
         Matrix4x4 res = new Matrix4x4();
         res = ortho * m;        
         res.m23 = -(2 * far * near) / (far - near);
+
+		res *= Matrix4x4.Scale(new Vector3(-1, 1, 1));
+
         return res;
     }
 	
