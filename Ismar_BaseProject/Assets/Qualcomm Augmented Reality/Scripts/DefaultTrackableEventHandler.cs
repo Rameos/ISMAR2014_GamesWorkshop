@@ -156,7 +156,9 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         }
         else
         {
-            UIManagerGPS.FinishedGPS();
+            if(Application.loadedLevelName == "GPSscene"){
+                UIManagerGPS.FinishedGPS();
+            }            
         }
 
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
