@@ -8,7 +8,7 @@ public class Input_Password : MonoBehaviour {
     string password ;
     string inputInLine = "";
 
-
+	public AudioSource right, wrong;
 
     float posXInputField;
     float posYInputField;
@@ -28,12 +28,12 @@ public class Input_Password : MonoBehaviour {
 
 		if(GUI.Button(new Rect(posXInputField+160, posYInputField, 50, 25), "Login")) {
 			if (inputInLine == password){
-				Debug.Log ("good ");
+				right.Play();
 				FadeManager.FadeOut();
 			}
 			else
 			{
-				Debug.Log ("bad ");
+				wrong.Play();
 				inputInLine = "Password incorrect!";
 			}
 		}

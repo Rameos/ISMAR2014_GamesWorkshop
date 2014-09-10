@@ -8,6 +8,7 @@ public class FirstPersonSwordScript : MonoBehaviour {
 	public GameObject explosion;
 	public bool isUmbrella;
 
+	public AudioSource catchTetrisPpl, deflectBarrel, explosiveBarrel;
 
 	// Use this for initialization
 	void Start () {
@@ -34,6 +35,7 @@ public class FirstPersonSwordScript : MonoBehaviour {
 				{if (!isUmbrella)
 
 						GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonPlayerStatsScript>().score++;
+					catchTetrisPpl.Play();
 				}
 			}
 
@@ -43,12 +45,13 @@ public class FirstPersonSwordScript : MonoBehaviour {
 				GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonPlayerStatsScript>().lives--;
 				GameObject e = (GameObject)Instantiate(explosion);
 				e.transform.position = barrel.gameObject.transform.position;
+					explosiveBarrel.Play();
 			}
 
 			else
 			{if (isUmbrella)
 			GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonPlayerStatsScript>().score++;
-				
+					deflectBarrel.Play();
 				}}
 
 			Destroy (barrel.gameObject);

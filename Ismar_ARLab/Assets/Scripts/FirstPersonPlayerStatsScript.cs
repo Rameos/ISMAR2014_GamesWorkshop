@@ -5,7 +5,7 @@ public class FirstPersonPlayerStatsScript : MonoBehaviour {
 	
 	
 	public int lives, score, targetScore;
-	
+	public AudioSource exp, normal;
 	// Use this for initialization
 	void Start () {
 		lives = 5;
@@ -44,7 +44,12 @@ public class FirstPersonPlayerStatsScript : MonoBehaviour {
 				lives--;
 			GameObject.FindGameObjectWithTag("Donkey").GetComponent<Animator>().SetBool(Animator.StringToHash("hit"), true);
 			StartCoroutine(AnimationRoutine());
+			if (other.gameObject.GetComponent<FirstPersonBarrelScript>().isExplosive)
+				exp.Play();
+			else
+				normal.Play();
 			}
+
 			
 			Destroy (other.gameObject);
 
