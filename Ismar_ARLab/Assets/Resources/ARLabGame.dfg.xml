@@ -5,7 +5,7 @@
             <Node name="Art" id="node_1" displayName="A.R.T. Tracker">
                 <GuiPos x="339" y="179"/>
                 <Attribute xsi:type="utql:PrimitiveAttributeType" name="trackman-supernode" value="true" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
-                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5000" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5001" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
             </Node>
             <Node name="Body" displayName="ARTSword" id="node_4">
                 <GuiPos x="179" y="389"/>
@@ -26,7 +26,7 @@
         <Output>
             <Node name="Art" id="node_1">
                 <GuiPos x="339" y="179"/>
-                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5000" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5001" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
             </Node>
             <Node name="Body" displayName="ARTShield" id="node_3">
                 <GuiPos x="11" y="409"/>
@@ -319,7 +319,7 @@
             </Node>
             <Node name="B" id="node_1">
                 <GuiPos x="339" y="179"/>
-                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5000" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5001" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
             </Node>
             <Node name="C" id="node_2">
                 <GuiPos x="800" y="294"/>
@@ -350,7 +350,7 @@
         <Output>
             <Node name="A" displayName="A.R.T. Tracker" id="node_1">
                 <GuiPos x="339" y="179"/>
-                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5000" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5001" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
             </Node>
             <Node name="B" displayName="Kinect" id="node_2">
                 <GuiPos x="800" y="294"/>
@@ -375,7 +375,7 @@
             </Node>
             <Node name="B" id="node_1">
                 <GuiPos x="339" y="179"/>
-                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5000" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5001" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
             </Node>
             <Node name="C" id="node_4">
                 <GuiPos x="179" y="389"/>
@@ -415,7 +415,7 @@
             </Node>
             <Node name="B" id="node_1">
                 <GuiPos x="339" y="179"/>
-                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5000" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5001" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
             </Node>
             <Node name="C" id="node_3">
                 <GuiPos x="11" y="409"/>
@@ -601,7 +601,7 @@
             </Node>
             <Node name="B" displayName="A.R.T. Tracker" id="node_1">
                 <GuiPos x="339" y="179"/>
-                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5000" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5001" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
             </Node>
             <Edge name="AB" source="A" destination="B">
                 <Attribute xsi:type="utql:PrimitiveAttributeType" name="staticPosition" value="0.0  0.0  0.0" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
@@ -625,7 +625,7 @@
             </Node>
             <Node name="C" id="node_1">
                 <GuiPos x="339" y="179"/>
-                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5000" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
+                <Attribute xsi:type="utql:PrimitiveAttributeType" name="artPort" value="5001" xmlns:utql="http://ar.in.tum.de/ubitrack/utql"/>
             </Node>
             <Edge name="AB" source="A" destination="B" pattern-ref="pattern_11" edge-ref="Output">
                 <GuiLandmark x="434" y="518"/>
