@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class RotateCube : MonoBehaviour
@@ -33,26 +34,107 @@ public class RotateCube : MonoBehaviour
 
     public void SetTargetRotation(GameObject gameObject, SwipeScript.rotation dir)
     {
-        switch (dir)
-        {
-            case SwipeScript.rotation.right:
-                targetRotation.transform.Rotate(90, 0, 0, Space.World);
-                break;
+		int rotated = 0;
+		float cameraZ = Camera.main.gameObject.transform.rotation.eulerAngles.z;
 
-            case SwipeScript.rotation.left:
-                targetRotation.transform.Rotate(-90, 0, 0, Space.World);
-                break;
+		if ((cameraZ <= 45 && cameraZ >= 0) || (cameraZ <= 360 && cameraZ >= 315))
+		    rotated = 0;
+		if ((cameraZ >= 45 && cameraZ <= 135))
+			rotated = 1;
+		if ((cameraZ >= 135 && cameraZ <= 225))
+			rotated = 2;
+		if ((cameraZ >= 225 && cameraZ <= 315) || (cameraZ < 360 && cameraZ > 315))
+			rotated = 3;
 
-            case SwipeScript.rotation.up:
-                targetRotation.transform.Rotate(0, 0, 90, Space.World);
-                break;
+		//Text text = GameObject.Find("Current").GetComponent<Text>();
+		//text.text = "" + rotated;
 
-            case SwipeScript.rotation.down:
-                targetRotation.transform.Rotate(0, 0, -90, Space.World);
-                break;
-        }
+		if (rotated == 2) 
+		{
+						switch (dir) {
+						case SwipeScript.rotation.right:
+								targetRotation.transform.Rotate (0, 0, -90, Space.World);
+								break;
 
-        if (targetRotation.transform.up == Vector3.up)
+						case SwipeScript.rotation.left:
+								targetRotation.transform.Rotate (0, 0, 90, Space.World);
+								break;
+
+						case SwipeScript.rotation.up:
+								targetRotation.transform.Rotate (90, 0, 0, Space.World);
+								break;
+
+						case SwipeScript.rotation.down:
+								targetRotation.transform.Rotate (-90, 0, 0, Space.World);
+								break;
+						}
+				}
+
+		if (rotated == 1) 
+		{
+			switch (dir) 
+			{
+			case SwipeScript.rotation.right:
+				targetRotation.transform.Rotate (-90, 0, 0, Space.World);
+				break;
+				
+			case SwipeScript.rotation.left:
+				targetRotation.transform.Rotate (90, 0, 0, Space.World);
+				break;
+				
+			case SwipeScript.rotation.up:
+				targetRotation.transform.Rotate (0, 0, -90, Space.World);
+				break;
+				
+			case SwipeScript.rotation.down:
+				targetRotation.transform.Rotate (0, 0, 90, Space.World);
+				break;
+			}
+		}
+		if (rotated == 0) 
+		{
+			switch (dir) 
+			{
+			case SwipeScript.rotation.right:
+				targetRotation.transform.Rotate (0, 0, 90, Space.World);
+				break;
+				
+			case SwipeScript.rotation.left:
+				targetRotation.transform.Rotate (0, 0, -90, Space.World);
+				break;
+				
+			case SwipeScript.rotation.up:
+				targetRotation.transform.Rotate (-90, 0, 0, Space.World);
+				break;
+				
+			case SwipeScript.rotation.down:
+				targetRotation.transform.Rotate (90, 0, 0, Space.World);
+				break;
+			}
+		}
+		if (rotated == 3) 
+		{
+			switch (dir) 
+			{
+			case SwipeScript.rotation.right:
+				targetRotation.transform.Rotate (90, 0, 0, Space.World);
+				break;
+				
+			case SwipeScript.rotation.left:
+				targetRotation.transform.Rotate (-90, 0, 0, Space.World);
+				break;
+				
+			case SwipeScript.rotation.up:
+				targetRotation.transform.Rotate (0, 0, 90, Space.World);
+				break;
+				
+			case SwipeScript.rotation.down:
+				targetRotation.transform.Rotate (0, 0, -90, Space.World);
+				break;
+			}
+		}
+		
+		if (targetRotation.transform.up == Vector3.up)
         {
             sideShowing = 0;
         }

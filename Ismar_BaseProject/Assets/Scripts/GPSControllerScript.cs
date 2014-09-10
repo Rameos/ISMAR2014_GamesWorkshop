@@ -19,6 +19,7 @@ public class GPSControllerScript : MonoBehaviour {
     public GameObject coordsys;
     public GameObject leftArrow;
     public GameObject rightArrow;
+	Camera cam;
 
     private float distance1, distance2, distance3;
     public bool GPSOn;
@@ -30,6 +31,7 @@ public class GPSControllerScript : MonoBehaviour {
 
     void Start()
     {
+		cam = Camera.main;
         Input.gyro.enabled = true;
         leftArrow.SetActive(false);
         rightArrow.SetActive(false);
@@ -49,7 +51,7 @@ public class GPSControllerScript : MonoBehaviour {
             // Not sure if Input.gyro.attitude.eulerAngles.y is the right axis
             LeftOrRight(GetBearingTo(Input.location.lastData.latitude, Input.location.lastData.longitude, closeLat, closeLong), Input.gyro.attitude.eulerAngles.z);
         }
-        log = LeftOrRight(GetBearingTo(Input.location.lastData.latitude, Input.location.lastData.longitude, closeLat, closeLong), Input.gyro.attitude.eulerAngles.z);
+		log = "" + cam.transform.rotation.eulerAngles;
         GPSTextScript.changeText(Input.location.lastData.latitude, Input.location.lastData.longitude, log, closestDistance, closestKey);
         checkVictory();
     }
