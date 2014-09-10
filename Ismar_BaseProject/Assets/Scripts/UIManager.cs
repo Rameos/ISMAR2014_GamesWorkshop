@@ -16,11 +16,17 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+		Screen.orientation = ScreenOrientation.Portrait;
         buttonHide = buttonHide1;
         buttonShow = buttonShow1;
         lostObject = lostObject1;
         loader = loader1;
     }
+
+	void OnDestroy()
+	{
+		Screen.orientation = ScreenOrientation.Landscape;
+	}
 
     public static void ShowCancelDialog()
     {
