@@ -5,14 +5,14 @@ public class FirstPersonPlayerStatsScript : MonoBehaviour {
 	
 	
 	public int lives, score, targetScore;
-	
+	public AudioSource exp, normal;
 	// Use this for initialization
 	void Start () {
 		lives = 5;
 		score = 0;
 		targetScore = 15;
-
-
+		GameObject.FindGameObjectWithTag("Donkey").GetComponent<Animator>().SetBool(Animator.StringToHash("hit"), false);
+	
 
 
 	}
@@ -42,9 +42,22 @@ public class FirstPersonPlayerStatsScript : MonoBehaviour {
 		if (other.gameObject.GetComponent<FirstPersonBarrelScript>().tetris == false)
 			{
 				lives--;
+			GameObject.FindGameObjectWithTag("Donkey").GetComponent<Animator>().SetBool(Animator.StringToHash("hit"), true);
+			StartCoroutine(AnimationRoutine());
+			if (other.gameObject.GetComponent<FirstPersonBarrelScript>().isExplosive)
+				exp.Play();
+			else
+				normal.Play();
 			}
+
 			
 			Destroy (other.gameObject);
 
+	}
+
+	IEnumerator AnimationRoutine()
+	{
+		yield return new WaitForSeconds (2f);
+		GameObject.FindGameObjectWithTag("Donkey").GetComponent<Animator>().SetBool(Animator.StringToHash("hit"), false);
 	}
 }
