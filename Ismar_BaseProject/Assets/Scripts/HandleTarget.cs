@@ -54,6 +54,8 @@ public class HandleTarget : MonoBehaviour
             cube.GetComponent<RotateCube>().ChangeLocation();
         }
 
+        Debug.Log(PlayerPrefsX.GetBool("GPS_key2", false));
+
         if (PlayerPrefsX.GetBool("GPS_key2", false))
             target1.SetActive(!target1.activeSelf);
         if (PlayerPrefsX.GetBool("GPS_key1", false))

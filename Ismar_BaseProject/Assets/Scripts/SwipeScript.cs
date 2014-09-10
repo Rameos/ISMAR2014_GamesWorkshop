@@ -34,6 +34,14 @@ public class SwipeScript : MonoBehaviour
 
     void Update()
     {
+        if (Input.touchCount > 0 && GameObject.Find("Partiture").GetComponent<AudioSource>().isPlaying)
+        {
+            if (Input.touches[0].phase == TouchPhase.Began)
+            {
+                Victory.VictoryExecution();
+            }
+        }
+
         if (Input.touchCount <= 0 || !moveable)
         {
             return;
@@ -44,6 +52,11 @@ public class SwipeScript : MonoBehaviour
         switch (touch.phase)
         {
             case TouchPhase.Began:
+                if(GameObject.Find("Partiture").GetComponent<AudioSource>().isPlaying)
+                {
+                    Victory.VictoryExecution();
+                }
+
                 Ray ray = Camera.main.ScreenPointToRay(touch.position);
                 RaycastHit hit;
 
