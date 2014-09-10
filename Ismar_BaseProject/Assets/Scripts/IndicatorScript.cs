@@ -15,7 +15,12 @@ public class IndicatorScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //indicatorAnimator.speed = speed;
+        Debug.Log("" + (PlayerPrefsX.GetBool("GPS_key1", false) && PlayerPrefsX.GetBool("GPS_key2", false) && PlayerPrefsX.GetBool("GPS_key3", false)));
+        if ((PlayerPrefsX.GetBool("GPS_key1", false) && PlayerPrefsX.GetBool("GPS_key2", false) && PlayerPrefsX.GetBool("GPS_key3", false)))
+        {
+            Debug.Log("show finished");
+            UIManagerGPS.FinishedGPS();
+        }
 	}
 
     public void relativeSpeed(float distance)

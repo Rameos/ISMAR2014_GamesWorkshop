@@ -7,7 +7,7 @@ public class HintCollectorScript : MonoBehaviour {
 
     void Start()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
         startVisibilities();
     }
 

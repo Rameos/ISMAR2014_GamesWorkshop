@@ -19,13 +19,19 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
     #endregion // PRIVATE_MEMBER_VARIABLES
 
     public HintCollectorScript hintCollector;
-
-
+    private GameObject torus;
+    private GameObject camera;
+    private Quaternion cameraRot;
+    private Vector3 cameraPos;
 
     #region UNTIY_MONOBEHAVIOUR_METHODS
     
     void Start()
     {
+        torus = GameObject.Find("torus");
+        camera = Camera.main.gameObject;
+        cameraRot = camera.transform.rotation;
+        cameraPos = camera.transform.position;
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
         if (mTrackableBehaviour)
         {
@@ -86,19 +92,24 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         string targetName = mTrackableBehaviour.TrackableName;
 
         if(Application.loadedLevelName == "GPSscene"){
+            torus.SetActive(false);
+
             if (targetName ==("stone1") || targetName==("stone2") || targetName==("stone3") || targetName==("stone4") || targetName==("stone5") || targetName == ("stone6") || targetName == ("stone7") || targetName == ("stone8"))
             {
+                UIManagerGPS.Toggle1();
                 hintCollector.found(1);
             }
-            if (targetName == ("gulli"))
+            if (targetName == ("shield2"))
             {
+                UIManagerGPS.Toggle2();
                 hintCollector.found(2);
             }
             if (targetName == ("sign"))
             {
+                UIManagerGPS.Toggle3();
                 hintCollector.found(3);
             }
-            if (targetName == ("chips"))
+            if (targetName == ("princess"))
             {
                 UIManagerGPS.ShowLoadingScreen();
                 Application.LoadLevelAsync("Safepuzzle");
@@ -134,6 +145,18 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         if (Application.loadedLevelName == ("Safepuzzle"))
         {
             UIManager.ShowCancelDialog();
+        }
+
+        if (Application.loadedLevelName == ("GPSscene") && !(PlayerPrefsX.GetBool("GPS_key1", false) && PlayerPrefsX.GetBool("GPS_key2", false) && PlayerPrefsX.GetBool("GPS_key3", false)))
+        {            
+            torus.SetActive(true);
+            camera.transform.position = cameraPos;
+            camera.transform.rotation = cameraRot;
+
+        }
+        else
+        {
+            UIManagerGPS.FinishedGPS();
         }
 
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
