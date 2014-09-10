@@ -6,6 +6,6 @@ public class Victory : MonoBehaviour {
     public static void VictoryExecution()
     {
         GlobalData.Instance.gameSolved(MiniGame.GPSGame);
-        Application.LoadLevel("MainMenu");
+        Application.LoadLevel("GameSelector");
     }
 }
