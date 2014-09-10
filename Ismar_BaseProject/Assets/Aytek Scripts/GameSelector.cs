@@ -61,27 +61,39 @@ public class GameSelector : MonoBehaviour
 
         if (name == "Lens3")
         {
+            if (!GlobalData.Instance.isGameSolved(MiniGame.MagnifyingLense))
+            {
             notification = "Starting the Magnifying Glass game";
             sceneName = "MagnifyIntro";
             LoadGame();
+            }
         }
         else if ((name == "maze3" || name == "MazeTarget2"))
         {
-            notification = "Starting the Energymaze game";
-            sceneName = "ForceGameInstructions";
-            LoadGame();
+            if (!GlobalData.Instance.isGameSolved(MiniGame.EnergyMaze))
+            {
+                notification = "Starting the Energymaze game";
+                sceneName = "ForceGameInstructions";
+                LoadGame();
+            }
         }
         else if (name == "BackCover")
         {
-            notification = "Starting the Light game";
-            sceneName = "LibraryInfo";
-            LoadGame();
+            if(!GlobalData.Instance.isGameSolved(MiniGame.Library))
+            {
+                notification = "Starting the Light game";
+                sceneName = "LibraryInfo";
+                LoadGame();
+            }
         }
         else if (name == "PrincessMarker")
         {
-            notification = "Starting the GPS game";
-            sceneName = "GPSscene";
-            LoadGame();
+            if(!GlobalData.Instance.isGameSolved(MiniGame.GPSGame))
+            {
+                notification = "Starting the GPS game";
+                sceneName = "GPSscene";
+                LoadGame();
+            }
         }
     }
 
@@ -158,7 +170,6 @@ public class GameSelector : MonoBehaviour
         if (showProgress)
         {
             // Init Points
-
             anchorLayout = new Vector2(Screen.width * 0.7f, Screen.height * 0.3f);
             anchorText = new Vector2(Screen.width * 0.25f, Screen.height * 0.3f);
             miniGameName.fontSize = (int)(Screen.height * 0.05f);
@@ -194,7 +205,7 @@ public class GameSelector : MonoBehaviour
 
     private Texture drawStatusOfGame(MiniGame type)
     {
-        if(GlobalData.Instance.isGameSolved(MiniGame.GPSGame))
+        if(GlobalData.Instance.isGameSolved(type))
         {
             return doneQuestButton;
 

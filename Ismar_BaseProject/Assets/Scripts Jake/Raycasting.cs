@@ -49,6 +49,8 @@ public class Raycasting : MonoBehaviour {
         if (completed)
         {
             GUI.Box(new Rect(Screen.width / 4, Screen.height / 4, Screen.width / 2, Screen.height / 2), "CONGRATULATIONS!\nYou succesfully finished the game. Tap on MAIN MENU for other mini-games.");
+            //Solve the Game;
+            GlobalData.Instance.gameSolved(MiniGame.MagnifyingLense);
         }
     }
 	
