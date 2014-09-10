@@ -88,10 +88,6 @@ public class ForceGame : MonoBehaviour
 
     void Awake()
     {
-        //Screen.orientation = ScreenOrientation.AutoRotation;
-        //InitObjectCache();
-        //SetGameState(GameState.Idle);
-        
 	}
 
     void Update()
@@ -103,8 +99,6 @@ public class ForceGame : MonoBehaviour
         else if (gameState == GameState.Running)
         {
             gameTimer += Time.deltaTime;
-
-            //Debug.Log(gameTimer.ToString("0.00"));
             
             CreateForceFieldUsingSwipeMotion();
         }
@@ -139,31 +133,27 @@ public class ForceGame : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.skin.box.fontSize = Screen.height / 20;
-        GUI.skin.button.fontSize = Screen.height / 20;
+        GUI.skin.box.fontSize = Screen.height / 25;
+        GUI.skin.button.fontSize = Screen.height / 25;
 
-        if (gameState == GameState.Running)
+        if (GUI.Button(new Rect(0, 0, Screen.width / 4, Screen.height / 8), "MAIN MENU"))
         {
-            if (GUI.Button(new Rect(10, 10, 400, 80), "RESTART"))
-            {
-                SetGameState(GameState.Intro);
-            }
+            Application.LoadLevel("GameSelector");
         }
-        else if (gameState == GameState.Prompting)
-        {
-            if (GUI.Button(new Rect(10, 10, 400, 80), "TRY AGAIN"))
-            {
-                SetGameState(GameState.Intro);
-            }
-        }
-        else if (gameState == GameState.Win)
-        {
-            GUI.Box(new Rect(Screen.width / 2 - 200, Screen.height / 2 - 40, 400, 80), "CONGRATULATIONS\nTIME: " + gameTimer.ToString("0.00"));
 
-            if (GUI.Button(new Rect(10, 10, 400, 80), "EXIT TO MAIN MENU"))
-            {
-                Application.LoadLevel("GameSelector");
-            }
+        if (GUI.Button(new Rect(Screen.width / 4, 0, Screen.width / 4, Screen.height / 8), "RESTART"))
+        {
+            SetGameState(GameState.Intro);
+        }
+
+        if (gameState == GameState.Win)
+        {
+            GUI.Box(new Rect(Screen.width / 4, Screen.height / 4, Screen.width / 2, Screen.height / 2), "CONGRATULATIONS!\nYou succesfully finished the game. Tap on MAIN MENU for other mini-games." );
+        }
+
+        if (gameState == GameState.Prompting)
+        {
+            GUI.Box(new Rect(Screen.width / 4, Screen.height / 4, Screen.width / 2, Screen.height / 2), "YOU HIT THE WALL");
         }
     }
 
@@ -328,14 +318,8 @@ public class ForceGame : MonoBehaviour
 
         gameState = GameState.Win;
 
-        if (trackableName == "maze3")
+        if (trackableName == "maze3" || trackableName == "MazeTarget2")
         {
-            Debug.Log("0 SOLVED");
-            GlobalData.Instance.gameSolved(MiniGame.EnergyMaze);
-        }
-        else if (trackableName == "MazeTarget2")
-        {
-            Debug.Log("1 SOLVED");
             GlobalData.Instance.gameSolved(MiniGame.EnergyMaze);
         }
     }

@@ -3,7 +3,8 @@ using System.Collections;
 
 public class IntroScript : MonoBehaviour
 {
-    string instructionText = @"Use the magnifying glass to scan different Ismar posters and find the hidden game functions. Once all functions are discovered you must put them in the blank spots on the blueprints to obtain the clue. Tap your screen to start.";
+    string instructionText = @"Use the magnifying glass to scan the poster and find the hidden game functions. Tap your screen to start.";
+
     void Start()
     {
 
@@ -29,7 +30,8 @@ public class IntroScript : MonoBehaviour
     void OnGUI()
     {
         GUI.skin.box.wordWrap = true;
-        GUI.skin.box.fontSize = Screen.height / 20;
-        GUI.Box(new Rect(Screen.width / 8f, Screen.height / 8f, (Screen.width * 6f) / 8f, (Screen.height * 6f) / 8f), instructionText);
+        GUI.skin.box.fontSize = Screen.height / 25;
+        GUI.skin.button.fontSize = Screen.height / 25;
+        GUI.Box(new Rect(Screen.width / 4f, Screen.height / 4f, Screen.width / 2f, Screen.height / 2f), instructionText);
     }
 }

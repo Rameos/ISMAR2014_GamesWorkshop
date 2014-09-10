@@ -23,7 +23,7 @@ public class Raycasting : MonoBehaviour {
 	public bool Word9 = false;
 	public bool Word10 = false;
 
-
+    bool completed = false;
 
 	// Use this for initialization
 	void Start()
@@ -32,7 +32,25 @@ public class Raycasting : MonoBehaviour {
 		myCamera = GameObject.Find("ARCamera");	
 	}
 
+    void OnGUI()
+    {
+        GUI.skin.box.fontSize = Screen.height / 25;
+        GUI.skin.button.fontSize = Screen.height / 25;
 
+        GUI.Box(new Rect(Screen.width / 2, 0, Screen.width / 2, Screen.height / 8), "CLUES FOUND: " + WordCount + "/4");
+
+        if (GUI.Button(new Rect(0, 0, Screen.width / 4, Screen.height / 8), "MAIN MENU"))
+        {
+            QCARRenderer.Instance.DrawVideoBackground = true;
+
+            Application.LoadLevel("GameSelector");
+        }
+
+        if (completed)
+        {
+            GUI.Box(new Rect(Screen.width / 4, Screen.height / 4, Screen.width / 2, Screen.height / 2), "CONGRATULATIONS!\nYou succesfully finished the game. Tap on MAIN MENU for other mini-games.");
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -43,7 +61,7 @@ public class Raycasting : MonoBehaviour {
 		GameObject.Find ("Word4").renderer.enabled = false;
 
 
-		GameObject.Find ("Counter2").GetComponent<TextMesh> ().text = WordCount.ToString ();
+		//GameObject.Find ("Counter2").GetComponent<TextMesh> ().text = WordCount.ToString ();
 
 		Ray ray = camera.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));				// Raycasting. Basically allows the button interaction
 		
@@ -73,8 +91,7 @@ public class Raycasting : MonoBehaviour {
 
 		if (WordCount == 4)
         {
-            Debug.Log("YOU WON THE GAME");
-
+            completed = true;
 
             GlobalData.Instance.gameSolved(MiniGame.MagnifyingLense);
 

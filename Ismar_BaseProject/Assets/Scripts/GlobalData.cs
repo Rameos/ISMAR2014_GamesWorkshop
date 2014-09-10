@@ -39,9 +39,6 @@ public class GlobalData  {
 			return;
 		}
 
-	
-
-
 		instance = this;
 	}
 
@@ -51,23 +48,28 @@ public class GlobalData  {
 		if(PlayerPrefs.HasKey(key))
 		{
 			return PlayerPrefs.GetInt(key) != 0;
-		} 
+		}
+ 
 		return false;
 
 	}
 
 	public void gameSolved(MiniGame game) {
 		string key = "solvedGame_"+ game.ToString();
+        PlayerPrefs.SetInt(key, 1);
+
 		//PlayerPrefs.SetInt(1);
 	}
 
-	public float getGameValue(MiniGame game, string keySuffix){
+	public float getGameValue(MiniGame game, string keySuffix)
+    {
 		string key =  game.ToString()+keySuffix;
 		
 		if(PlayerPrefs.HasKey(key))
 		{
 			return PlayerPrefs.GetFloat(key);
-		} 
+		}
+
 		return 0f;
 	}
 
