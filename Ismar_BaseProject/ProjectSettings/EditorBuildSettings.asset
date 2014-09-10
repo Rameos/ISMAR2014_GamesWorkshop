@@ -19,3 +19,7 @@ EditorBuildSettings:
     path: Assets/MagnifyIntro.unity
   - enabled: 0
     path: Assets/Scenes/MagnifyingGlassGame.unity
+  - enabled: 0
+    path: Assets/LibraryInfo.unity
+  - enabled: 0
+    path: Assets/Scenes/Library.unity

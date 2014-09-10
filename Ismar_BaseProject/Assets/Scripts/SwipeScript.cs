@@ -140,7 +140,6 @@ public class SwipeScript : MonoBehaviour
         bool success = true;
         string matrix1 = "";
         string matrix2 = "";
-		string currentMatrix;
 
         for (int i = 0; i < 3; i++)
         {

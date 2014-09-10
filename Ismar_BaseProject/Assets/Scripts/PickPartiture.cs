@@ -45,6 +45,10 @@ public class PickPartiture : MonoBehaviour
                         {
                             GetComponent<AudioSource>().Play();
                         }
+                        else
+                        {
+                            Victory.VictoryExecution();
+                        }
                     }
                 }
                 break;
