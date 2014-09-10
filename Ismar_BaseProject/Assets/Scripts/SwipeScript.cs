@@ -8,8 +8,8 @@ public class SwipeScript : MonoBehaviour
     private GameObject gObject;
     public static bool moveable;
 
-    private int[,] finalMatrix1 = new int[3, 3] { { 4, 2, 3 }, { 4, 1, 0 }, { 4, 5, 1 } };
-    private int[,] finalMatrix2 = new int[3, 3] { { 2, 0, 5 }, { 2, 3, 3 }, { 0, 1, 2 } };
+    private int[,] finalMatrix1 = new int[3, 3] { { 2, 5, 4 }, { 2, 1, 0 }, { 2, 3, 1 } };
+    private int[,] finalMatrix2 = new int[3, 3] { { 5, 0, 3 }, { 5, 4, 4 }, { 0, 1, 5 } };
 
     private int[,] currentMatrix1 = new int[3, 3] { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
     private int[,] currentMatrix2 = new int[3, 3] { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
@@ -154,6 +154,9 @@ public class SwipeScript : MonoBehaviour
                     success = false;
             }
         }
+
+		//Text text = GameObject.Find("Current").GetComponent<Text>();
+		//text.text = matrix1 + " - " + matrix2;
 
         if (success)
         {

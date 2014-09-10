@@ -15,6 +15,9 @@ public class UIManagerGPS : MonoBehaviour {
     public static Toggle toggle2;
     public static Toggle toggle3;
 
+    public static GameObject finished;
+    public GameObject finish;
+
 
 
 	void Start () {
@@ -22,6 +25,8 @@ public class UIManagerGPS : MonoBehaviour {
         toggle2 = toggler2;
         toggle3 = toggler3;
         loader = loader1;
+        finished = finish;
+        finish.SetActive(false);
         if (!PlayerPrefsX.GetBool("GPS_key1", false))
         {
             toggle1.isOn = false;
@@ -60,5 +65,10 @@ public class UIManagerGPS : MonoBehaviour {
     public static void Toggle3()
     {
         toggle3.isOn = true;
+    }
+
+    public static void FinishedGPS()
+    {
+        finished.SetActive(true);
     }
 }

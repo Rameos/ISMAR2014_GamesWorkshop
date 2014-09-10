@@ -3,8 +3,9 @@ using System.Collections;
 
 public class Victory : MonoBehaviour {
 
-    public void VictoryExecution()
+    public static void VictoryExecution()
     {
-
+        GlobalData.Instance.gameSolved(MiniGame.GPSGame);
+        Application.LoadLevel("MainMenu");
     }
 }

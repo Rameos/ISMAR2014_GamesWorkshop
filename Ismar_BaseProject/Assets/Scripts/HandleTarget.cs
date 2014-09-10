@@ -40,7 +40,6 @@ public class HandleTarget : MonoBehaviour
             victoryTriggered = true;
             victory = false;
         }
-
     }
 
     public void ShowTarget()
@@ -71,5 +70,6 @@ public class HandleTarget : MonoBehaviour
     public void Victory()
     {
         victory = true;
+        GameObject.Find("Canvas").SetActive(false);
     }
 }

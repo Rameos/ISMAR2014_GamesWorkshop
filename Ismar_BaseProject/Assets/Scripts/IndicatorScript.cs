@@ -15,7 +15,7 @@ public class IndicatorScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //indicatorAnimator.speed = speed;
+
 	}
 
     public void relativeSpeed(float distance)
