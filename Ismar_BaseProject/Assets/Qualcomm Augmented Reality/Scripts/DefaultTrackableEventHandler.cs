@@ -18,6 +18,8 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
     
     #endregion // PRIVATE_MEMBER_VARIABLES
 
+    public HintCollectorScript hintCollector;
+
 
 
     #region UNTIY_MONOBEHAVIOUR_METHODS
@@ -81,6 +83,33 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
             component.enabled = true;
         }
 
+        string targetName = mTrackableBehaviour.TrackableName;
+
+        if(Application.loadedLevelName == "GPSscene"){
+            if (targetName ==("stone1") || targetName==("stone2") || targetName==("stone3") || targetName==("stone4") || targetName==("stone5") || targetName == ("stone6") || targetName == ("stone7") || targetName == ("stone8"))
+            {
+                hintCollector.found(1);
+            }
+            if (targetName == ("gulli"))
+            {
+                hintCollector.found(2);
+            }
+            if (targetName == ("sign"))
+            {
+                hintCollector.found(3);
+            }
+            if (targetName == ("chips"))
+            {
+                UIManagerGPS.ShowLoadingScreen();
+                Application.LoadLevelAsync("Safepuzzle");
+            }
+
+        }
+        if (Application.loadedLevelName == "Safepuzzle")
+        {
+            UIManager.HideCancelDialog();
+        }
+
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
     }
 
@@ -100,6 +129,11 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         foreach (Collider component in colliderComponents)
         {
             component.enabled = false;
+        }
+
+        if (Application.loadedLevelName == ("Safepuzzle"))
+        {
+            UIManager.ShowCancelDialog();
         }
 
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");

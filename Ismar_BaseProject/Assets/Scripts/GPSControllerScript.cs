@@ -47,9 +47,9 @@ public class GPSControllerScript : MonoBehaviour {
             indicatorScript.relativeSpeed(closestDistance);
 
             // Not sure if Input.gyro.attitude.eulerAngles.y is the right axis
-            LeftOrRight(GetBearingTo(Input.location.lastData.latitude, Input.location.lastData.longitude, closeLat, closeLong), Input.gyro.attitude.eulerAngles.y);
+            LeftOrRight(GetBearingTo(Input.location.lastData.latitude, Input.location.lastData.longitude, closeLat, closeLong), Input.gyro.attitude.eulerAngles.z);
         }
-        log = LeftOrRight(GetBearingTo(Input.location.lastData.latitude, Input.location.lastData.longitude, closeLat, closeLong), Input.gyro.attitude.eulerAngles.y);
+        log = LeftOrRight(GetBearingTo(Input.location.lastData.latitude, Input.location.lastData.longitude, closeLat, closeLong), Input.gyro.attitude.eulerAngles.z);
         GPSTextScript.changeText(Input.location.lastData.latitude, Input.location.lastData.longitude, log, closestDistance, closestKey);
         checkVictory();
     }
