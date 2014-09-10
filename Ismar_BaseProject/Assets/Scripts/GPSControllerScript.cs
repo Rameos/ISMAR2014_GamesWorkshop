@@ -46,7 +46,7 @@ public class GPSControllerScript : MonoBehaviour {
             rotationScript.RotateTorus(GetBearingTo(Input.location.lastData.latitude, Input.location.lastData.longitude, closeLat, closeLong) + Input.compass.trueHeading);
         }
         log = "closestkey: " + GetBearingTo(Input.location.lastData.latitude, Input.location.lastData.longitude, closeLat, closeLong);
-        GPSTextScript.changeText(Input.location.lastData.latitude, Input.location.lastData.longitude, log, closestDistance, closestKey);
+        //GPSTextScript.changeText(Input.location.lastData.latitude, Input.location.lastData.longitude, log, closestDistance, closestKey);
         checkVictory();
     }
 

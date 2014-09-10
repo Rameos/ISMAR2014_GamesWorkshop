@@ -2120,7 +2120,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bf30d577eead1ef40bcf2b404289daf4, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: bf30d577eead1ef40bcf2b404289daf4, type: 2}
       propertyPath: mDataSetsToLoad.Array.data[0]
@@ -4830,7 +4830,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 453665299}
-  m_Text: Find the Candle sticks
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: .109999999
   m_LineSpacing: 1
@@ -4840,7 +4840,7 @@ TextMesh:
   m_FontSize: 182
   m_FontStyle: 1
   m_RichText: 1
-  m_Font: {fileID: 12800000, guid: 8bb815e889357f24dabe63fe30a9463e, type: 3}
+  m_Font: {fileID: 12800000, guid: 4d325e201dd642142921dfdd7cd2976f, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4278253823
@@ -4856,7 +4856,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 8bb815e889357f24dabe63fe30a9463e, type: 3}
+  - {fileID: 2100000, guid: 4d325e201dd642142921dfdd7cd2976f, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -24121,6 +24121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a917f0af64a6423093132dab321c15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hintCollector: {fileID: 0}
 --- !u!33 &1707293455
 MeshFilter:
   m_ObjectHideFlags: 0

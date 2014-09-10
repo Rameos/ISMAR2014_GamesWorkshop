@@ -8,6 +8,8 @@ public class ForceGameInstructions : MonoBehaviour
     [SerializeField]
     Texture tutorialTexture;
 
+    [SerializeField]
+    private string loadLevelName = "ForceGame";
     public float widthX;
     public float heightX;
     //[SerializeField]
@@ -30,14 +32,14 @@ public class ForceGameInstructions : MonoBehaviour
         {
             if (Input.GetTouch(i).phase == TouchPhase.Ended)
             {
-                Application.LoadLevel("ForceGame");
+                Application.LoadLevel(loadLevelName);
             }
 
             ++i;
         }
 
         if(Input.GetMouseButtonDown(0))
-            Application.LoadLevel("ForceGame");
+            Application.LoadLevel(loadLevelName);
 	}
 
     void OnGUI()
