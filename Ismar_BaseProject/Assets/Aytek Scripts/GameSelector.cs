@@ -102,7 +102,9 @@ public class GameSelector : MonoBehaviour
         GlobalData instance = GlobalData.Instance;
 
         return instance.isGameSolved(MiniGame.EnergyMaze) &&
-            instance.isGameSolved(MiniGame.MagnifyingLense);
+            instance.isGameSolved(MiniGame.MagnifyingLense) && 
+            instance.isGameSolved(MiniGame.GPSGame) && 
+            instance.isGameSolved(MiniGame.Library);
     }
 
     void OnGUI()
@@ -189,6 +191,8 @@ public class GameSelector : MonoBehaviour
             //EnergyGame
             GUI.Label(new Rect(anchorText.x, anchorText.y + Screen.height * 0.45f, Screen.width * 0.48f, Screen.width * 0.05f), "The missing candle", miniGameName);
             GUI.DrawTexture(new Rect(anchorLayout.x, anchorLayout.y + Screen.height * 0.45f, Screen.width * 0.05f, Screen.width * 0.05f), drawStatusOfGame(MiniGame.Library));
+
+            
            
         }
 
