@@ -141,19 +141,19 @@ public class Translate : MonoBehaviour {
 		case 0:
 			break;
 			
-		case 1:
+        //case 1:
 			
-			if(GUI.Button(new Rect (20,400, 230, 150), "Ok"))
-			{
-				GameObject.Find("InfoText").renderer.enabled = false;
-				OkButton = 0;
-			}
+        //    if(GUI.Button(new Rect (20,400, 230, 150), "Ok"))
+        //    {
+        //        GameObject.Find("InfoText").renderer.enabled = false;
+        //        OkButton = 0;
+        //    }
 			
-			break;
+        //    break;
 		
 		}
 	
-
+        
 		switch(ExploreButton)
 		{
 		case 0:
@@ -164,6 +164,7 @@ public class Translate : MonoBehaviour {
 
 			if(GUI.Button(new Rect (20,400,200, 150), "Search"))
 			{
+                
 				CandleRender = 1;
 				GameObject.Find("InfoText").GetComponent<TextMesh>().text = "Candle stick found";
 				GameObject.Find("InfoText").renderer.enabled = true;
